@@ -28,4 +28,14 @@ describe SinglyLinkedList do
     list.push_node('hidden rebel base')
     expect(list.find_by_data('hidden rebel base').data).to eql('hidden rebel base')
   end
+
+  it "can pop off the last node" do
+    list.push_node('Chewy')
+    list.push_node('Han')
+    expect(list.find_tail.data).to eql('Han')
+    list.pop
+    expect(list.find_tail.data).to eql('Chewy')
+    list.pop
+    expect(list.find_tail.data).to eql('head')
+  end
 end

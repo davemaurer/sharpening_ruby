@@ -33,4 +33,14 @@ class SinglyLinkedListTest < Minitest::Test
     list.push_node('Darth Vader')
     assert_equal 'Darth Vader', list.find_by_data('Darth Vader').data
   end
+
+  def test_it_can_pop_off_the_last_node
+    list.push_node('Luke')
+    list.push_node('Leia')
+    assert_equal 'Leia', list.find_tail.data
+    list.pop
+    assert_equal 'Luke', list.find_tail.data
+    list.pop
+    assert_equal 'head', list.find_tail.data
+  end
 end
