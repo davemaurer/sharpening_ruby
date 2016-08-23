@@ -37,6 +37,18 @@ class SinglyLinkedList
     current_node.next_node = nil
   end
 
+  def delete_node(data)
+    current_node = head
+    until current_node.next_node.data == data
+      current_node = current_node.next_node
+    end
+    if current_node.next_node.next_node
+      current_node.next_node = current_node.next_node.next_node
+    else
+      current_node.next_node == nil
+    end
+  end
+
   def prepend_node(data)
     saved_node = head.next_node
     head.next_node = Node.new(data)

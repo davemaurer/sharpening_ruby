@@ -46,4 +46,12 @@ describe SinglyLinkedList do
     expect(list.head.next_node.data).to eql('R2')
     expect(list.find_tail.data).to eql('Lando')
   end
+
+  it "can delete a node by data" do
+    list.push_node('Hoth')
+    list.push_node('Tantooine')
+    expect(list.head.next_node.data).to eql('Hoth')
+    list.delete_node('Hoth')
+    expect(list.head.next_node.data).to eql('Tantooine')
+  end
 end

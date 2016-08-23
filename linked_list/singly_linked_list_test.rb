@@ -51,4 +51,12 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'X-Wing', list.head.next_node.data
     assert_equal 'Tie Fighter', list.find_tail.data
   end
+
+  def test_it_can_delete_a_node_by_data
+    list.push_node('Light Saber')
+    list.push_node('Blaster')
+    assert_equal 'Light Saber', list.head.next_node.data
+    list.delete_node('Light Saber')
+    assert_equal 'Blaster', list.head.next_node.data
+  end
 end
