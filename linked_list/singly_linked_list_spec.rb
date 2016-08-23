@@ -48,6 +48,10 @@ describe SinglyLinkedList do
     expect(list.find_tail.data).to eql('head')
   end
 
+  it "tells you when you try to pop the last node off an empty list" do
+    expect(list.pop).to eql("This list has no nodes")
+  end
+
   it "can prepend a node" do
     list.push_node('Lando')
 

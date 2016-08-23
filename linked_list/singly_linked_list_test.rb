@@ -53,6 +53,10 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'head', list.find_tail.data
   end
 
+  def test_it_tells_you_when_trying_to_pop_an_empty_list
+    assert_equal 'This list has no nodes', list.pop
+  end
+
   def test_it_can_prepend_a_node
     list.push_node('Tie Fighter')
 
@@ -88,4 +92,6 @@ class SinglyLinkedListTest < Minitest::Test
 
     assert_equal 4, list.count
   end
+
+
 end
