@@ -43,4 +43,12 @@ class SinglyLinkedListTest < Minitest::Test
     list.pop
     assert_equal 'head', list.find_tail.data
   end
+
+  def test_it_can_prepend_a_node
+    list.push_node('Tie Fighter')
+    assert_equal 'Tie Fighter', list.find_tail.data
+    list.prepend_node('X-Wing')
+    assert_equal 'X-Wing', list.head.next_node.data
+    assert_equal 'Tie Fighter', list.find_tail.data
+  end
 end

@@ -38,4 +38,12 @@ describe SinglyLinkedList do
     list.pop
     expect(list.find_tail.data).to eql('head')
   end
+
+  it "can prepend a node" do
+    list.push_node('Lando')
+    expect(list.find_tail.data).to eql('Lando')
+    list.prepend_node('R2')
+    expect(list.head.next_node.data).to eql('R2')
+    expect(list.find_tail.data).to eql('Lando')
+  end
 end
