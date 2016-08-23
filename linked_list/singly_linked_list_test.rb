@@ -3,9 +3,9 @@ require 'minitest/pride'
 require_relative 'singly_linked_list'
 require_relative 'singly_linked_list_node'
 
-class LinkedListTest < Minitest::Test
+class SinglyLinkedListTest < Minitest::Test
   def list
-    @list ||= LinkedList.new('MyList')
+    @list ||= SinglyLinkedList.new('MyList')
   end
 
   def test_it_has_a_head

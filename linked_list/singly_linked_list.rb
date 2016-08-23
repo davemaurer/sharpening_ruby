@@ -1,6 +1,6 @@
 require_relative 'singly_linked_list_node'
 
-class LinkedList
+class SinglyLinkedList
   attr_accessor :head, :name
 
   def initialize(name)
