@@ -68,9 +68,7 @@ describe SinglyLinkedList do
     list.push_node('Tantooine')
 
     expect(list.head.next_node.data).to eql('Hoth')
-
-    list.delete_node('Hoth')
-
+    expect(list.delete_node('Hoth').data).to eql('Hoth')
     expect(list.head.next_node.data).to eql('Tantooine')
   end
 

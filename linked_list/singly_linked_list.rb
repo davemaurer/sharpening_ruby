@@ -43,7 +43,7 @@ class SinglyLinkedList
     until current_node.data == data
       return "No such node exists" if current_node.tail? && current_node != data
       if current_node.next_node.data == data
-        check_deleted_node(current_node)
+        return check_deleted_node(current_node)
       else
         current_node = current_node.next_node
       end

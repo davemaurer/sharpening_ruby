@@ -73,9 +73,7 @@ class SinglyLinkedListTest < Minitest::Test
     list.push_node('Blaster')
 
     assert_equal 'Light Saber', list.head.next_node.data
-
-    list.delete_node('Light Saber')
-
+    assert_equal 'Light Saber', list.delete_node('Light Saber').data
     assert_equal 'Blaster', list.head.next_node.data
   end
 
