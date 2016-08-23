@@ -54,4 +54,14 @@ class SinglyLinkedList
     head.next_node = Node.new(data)
     head.next_node.next_node = saved_node
   end
+
+  def count
+    counter = 0
+    current_node = head
+    while current_node.next_node != nil
+      current_node = current_node.next_node
+      counter += 1
+    end
+    counter
+  end
 end

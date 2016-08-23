@@ -74,4 +74,18 @@ class SinglyLinkedListTest < Minitest::Test
 
     assert_equal 'Blaster', list.head.next_node.data
   end
+
+  def test_it_can_count_its_nodes_excluding_head
+    assert_equal 0, list.count
+
+    list.push_node('Chewy')
+
+    assert_equal 1, list.count
+
+    list.push_node('Han')
+    list.push_node('Hoth')
+    list.push_node('Tantooine')
+
+    assert_equal 4, list.count
+  end
 end

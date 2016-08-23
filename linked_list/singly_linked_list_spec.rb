@@ -69,4 +69,18 @@ describe SinglyLinkedList do
 
     expect(list.head.next_node.data).to eql('Tantooine')
   end
+
+  it "can count its nodes excluding head" do
+    expect(list.count).to eql(0)
+
+    list.push_node('Chewy')
+
+    expect(list.count).to eql(1)
+
+    list.push_node('Han')
+    list.push_node('Hoth')
+    list.push_node('Tantooine')
+
+    expect(list.count).to eql(4)
+  end
 end
