@@ -83,6 +83,20 @@ describe SinglyLinkedList do
     expect(list.delete_node('Darth Maul')).to eql('No such node exists')
   end
 
+  it "can delete entire list" do
+    list.push_node('Han')
+    list.push_node('Hoth')
+    list.push_node('Tantooine')
+    list.push_node('Yoda')
+    list.push_node('Obi-Wan')
+
+    expect(list.count).to eql(5)
+
+    list.delete_all
+
+    expect(list.count).to eql(0)
+  end
+
   it "can count its nodes excluding head" do
     expect(list.count).to eql(0)
 

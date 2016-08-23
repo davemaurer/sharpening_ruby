@@ -60,6 +60,10 @@ class SinglyLinkedList
     return popped_node
   end
 
+  def delete_all
+    head.next_node = nil
+  end
+
   def prepend_node(data)
     saved_node = head.next_node
     head.next_node = Node.new(data)

@@ -88,6 +88,20 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'No such node exists', list.delete_node('Boba-Fett')
   end
 
+  def test_it_can_delete_entire_list
+    list.push_node('Han')
+    list.push_node('Hoth')
+    list.push_node('Tantooine')
+    list.push_node('Yoda')
+    list.push_node('Obi-Wan')
+
+    assert_equal 5, list.count
+
+    list.delete_all
+
+    assert_equal 0, list.count
+  end
+
   def test_it_can_count_its_nodes_excluding_head
     assert_equal 0, list.count
 
