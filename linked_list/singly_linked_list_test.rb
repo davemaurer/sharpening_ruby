@@ -101,6 +101,4 @@ class SinglyLinkedListTest < Minitest::Test
 
     assert_equal 4, list.count
   end
-
-
 end

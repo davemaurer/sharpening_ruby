@@ -15,7 +15,7 @@ class SinglyLinkedList
 
   def find_tail
     current_node = head
-    until current_node.next_node == nil
+    until current_node.tail?
       current_node = current_node.next_node
     end
     current_node
@@ -31,8 +31,8 @@ class SinglyLinkedList
 
   def pop
     current_node = head
-    return 'This list has no nodes' if current_node.next_node.nil?
-    until current_node.next_node.next_node == nil
+    return 'This list has no nodes' if current_node.tail?
+    until current_node.next_node.tail?
       current_node = current_node.next_node
     end
     current_node.next_node = nil
@@ -40,16 +40,14 @@ class SinglyLinkedList
 
   def delete_node(data)
     current_node = head
-    node_exists = false
-    until current_node.next_node == nil
+    until current_node.data == data
+      return "No such node exists" if current_node.tail? && current_node != data
       if current_node.next_node.data == data
         check_deleted_node(current_node)
-        node_exists = true
       else
         current_node = current_node.next_node
       end
     end
-    return "No such node exists" unless node_exists
   end
 
   def check_deleted_node(current_node)
@@ -71,7 +69,7 @@ class SinglyLinkedList
   def count
     counter = 0
     current_node = head
-    while current_node.next_node != nil
+    until current_node.tail?
       current_node = current_node.next_node
       counter += 1
     end
