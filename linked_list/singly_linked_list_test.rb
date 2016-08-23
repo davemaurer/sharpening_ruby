@@ -79,6 +79,15 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'Blaster', list.head.next_node.data
   end
 
+  def test_it_tells_you_when_trying_to_delete_a_nonexistent_node
+    assert_equal 'No such node exists', list.delete_node('Deathstar')
+
+    list.push_node('Sidius')
+    list.push_node('Anakin')
+
+    assert_equal 'No such node exists', list.delete_node('Boba-Fett')
+  end
+
   def test_it_can_count_its_nodes_excluding_head
     assert_equal 0, list.count
 

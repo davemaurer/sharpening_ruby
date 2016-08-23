@@ -31,7 +31,7 @@ class SinglyLinkedList
 
   def pop
     current_node = head
-    return "This list has no nodes" if current_node.next_node.nil?
+    return 'This list has no nodes' if current_node.next_node.nil?
     until current_node.next_node.next_node == nil
       current_node = current_node.next_node
     end
@@ -40,14 +40,26 @@ class SinglyLinkedList
 
   def delete_node(data)
     current_node = head
-    until current_node.next_node.data == data
-      current_node = current_node.next_node
+    node_exists = false
+    until current_node.next_node == nil
+      if current_node.next_node.data == data
+        check_deleted_node(current_node)
+        node_exists = true
+      else
+        current_node = current_node.next_node
+      end
     end
+    return "No such node exists" unless node_exists
+  end
+
+  def check_deleted_node(current_node)
+    popped_node = current_node.next_node
     if current_node.next_node.next_node
       current_node.next_node = current_node.next_node.next_node
     else
-      current_node.next_node == nil
+      current_node.next_node = nil
     end
+    return popped_node
   end
 
   def prepend_node(data)

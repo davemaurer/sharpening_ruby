@@ -49,7 +49,7 @@ describe SinglyLinkedList do
   end
 
   it "tells you when you try to pop the last node off an empty list" do
-    expect(list.pop).to eql("This list has no nodes")
+    expect(list.pop).to eql('This list has no nodes')
   end
 
   it "can prepend a node" do
@@ -72,6 +72,15 @@ describe SinglyLinkedList do
     list.delete_node('Hoth')
 
     expect(list.head.next_node.data).to eql('Tantooine')
+  end
+
+  it "tells you if you try to delete a node that isnt in the list" do
+    expect(list.delete_node('Hoth')).to eql('No such node exists')
+
+    list.push_node('Yoda')
+    list.push_node('Obi-Wan')
+
+    expect(list.delete_node('Darth Maul')).to eql('No such node exists')
   end
 
   it "can count its nodes excluding head" do
