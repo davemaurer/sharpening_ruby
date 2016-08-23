@@ -14,40 +14,52 @@ class SinglyLinkedListTest < Minitest::Test
 
   def test_it_can_add_nodes
     list.push_node('Jedi')
+
     assert_equal 'Jedi', list.head.next_node.data
   end
 
   def test_find_tail
     list.push_node('Jedi')
+
     assert_equal 'Jedi', list.find_tail.data
   end
 
   def test_pushing_multiple_nodes
     list.push_node('Jedi')
     list.push_node('Sith')
+
     assert_equal 'Jedi', list.head.next_node.data
     assert_equal 'Sith', list.find_tail.data
   end
 
   def test_it_can_find_a_node_by_data
     list.push_node('Darth Vader')
+
     assert_equal 'Darth Vader', list.find_by_data('Darth Vader').data
   end
 
   def test_it_can_pop_off_the_last_node
     list.push_node('Luke')
     list.push_node('Leia')
+
     assert_equal 'Leia', list.find_tail.data
+
     list.pop
+
     assert_equal 'Luke', list.find_tail.data
+
     list.pop
+
     assert_equal 'head', list.find_tail.data
   end
 
   def test_it_can_prepend_a_node
     list.push_node('Tie Fighter')
+
     assert_equal 'Tie Fighter', list.find_tail.data
+
     list.prepend_node('X-Wing')
+
     assert_equal 'X-Wing', list.head.next_node.data
     assert_equal 'Tie Fighter', list.find_tail.data
   end
@@ -55,8 +67,11 @@ class SinglyLinkedListTest < Minitest::Test
   def test_it_can_delete_a_node_by_data
     list.push_node('Light Saber')
     list.push_node('Blaster')
+
     assert_equal 'Light Saber', list.head.next_node.data
+
     list.delete_node('Light Saber')
+
     assert_equal 'Blaster', list.head.next_node.data
   end
 end
