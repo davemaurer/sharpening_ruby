@@ -9,7 +9,15 @@ class SinglyLinkedList
   end
 
   def push_node(data)
-    current_node = head
+    current_node = find_tail
     current_node.next_node = Node.new(data)
+  end
+
+  def find_tail
+    current_node = head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    current_node
   end
 end
