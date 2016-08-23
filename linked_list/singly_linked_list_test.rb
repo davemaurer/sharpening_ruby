@@ -28,4 +28,9 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'Jedi', list.head.next_node.data
     assert_equal 'Sith', list.find_tail.data
   end
+
+  def test_it_can_find_a_node_by_data
+    list.push_node('Darth Vader')
+    assert_equal 'Darth Vader', list.find_by_data('Darth Vader').data
+  end
 end

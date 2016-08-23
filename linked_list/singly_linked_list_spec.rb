@@ -23,4 +23,9 @@ describe SinglyLinkedList do
     expect(list.head.next_node.data).to eql('Jedi')
     expect(list.find_tail.data).to eql('Sith')
   end
+
+  it "can find nodes by data" do
+    list.push_node('hidden rebel base')
+    expect(list.find_by_data('hidden rebel base').data).to eql('hidden rebel base')
+  end
 end

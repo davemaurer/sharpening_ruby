@@ -20,4 +20,12 @@ class SinglyLinkedList
     end
     current_node
   end
+
+  def find_by_data(data)
+    current_node = head
+    until current_node.data == data
+      current_node = current_node.next_node
+    end
+    current_node
+  end
 end
