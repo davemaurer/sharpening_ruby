@@ -4,7 +4,14 @@ require 'pry'
 require_relative 'fibo1'
 
 class FiboTest < Minitest::Test
-  def test_it_exists
-    assert Fibo.new
+  attr_reader :fibo
+
+  def setup
+    @fibo = Fibo.new
+  end
+
+  def test_it_starts_with_an_array_of_0_and_1
+    assert_equal Array, fibo.starting_numbers.class
+    assert_equal [0, 1], fibo.starting_numbers
   end
 end
