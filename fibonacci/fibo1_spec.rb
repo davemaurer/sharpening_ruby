@@ -12,4 +12,9 @@ describe Fibo do
     fibo1 = Fibo.new(5)
     expect(fibo1.cycles).to eql(5)
   end
+
+  it 'can cycle twice' do
+    fibo2 = Fibo.new(2)
+    expect(fibo2.start).to eq(2)
+  end
 end
