@@ -7,4 +7,9 @@ describe Fibo do
     expect(fibo.starting_numbers.class).to eql(Array)
     expect(fibo.starting_numbers).to eql([0,1])
   end
+
+  it 'can take in a number of cycles' do
+    fibo1 = Fibo.new(5)
+    expect(fibo1.cycles).to eql(5)
+  end
 end
