@@ -19,4 +19,14 @@ class FiboTest < Minitest::Test
     fibo1 = Fibo.new(5)
     assert_equal 5, fibo1.cycles
   end
+
+  def test_it_can_cycle_twice
+    fibo2 = Fibo.new(2)
+    assert_equal 2, fibo2.start
+  end
+
+  def test_it_can_cycle_5_times
+    fibo5 = Fibo.new(5)
+    assert_equal 8, fibo5.start
+  end
 end
