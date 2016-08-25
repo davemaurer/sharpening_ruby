@@ -15,11 +15,11 @@ describe Fibo do
 
   it 'can cycle twice' do
     fibo2 = Fibo.new(2)
-    expect(fibo2.start).to eq(2)
+    expect(fibo2.start).to eql(2)
   end
 
   it 'can cycle 5 times' do
     fibo5 = Fibo.new(5)
-    expect(fibo5.start).to eq(8)
+    expect(fibo5.start).to eql(8)
   end
 end
