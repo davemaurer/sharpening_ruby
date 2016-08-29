@@ -10,6 +10,6 @@ class Fibo
     while starting_numbers.size - 1 <= cycles do
       starting_numbers << starting_numbers[-1] + starting_numbers[-2]
     end
-    starting_numbers.last
+    print starting_numbers.last
   end
 end
