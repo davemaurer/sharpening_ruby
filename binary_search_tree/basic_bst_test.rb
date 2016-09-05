@@ -23,22 +23,31 @@ describe BasicBinarySearchTree do
     root = tree.root
     tree.add_node(2)
 
-    assert_equal root.left_child.data, 2
+    assert_equal root.right_child.data, 2
   end
 
   it 'can add a new node with any numeric value' do
     root = tree.root
     tree.add_node(10)
 
-    assert_equal root.left_child.data, 10
+    assert_equal root.right_child.data, 10
   end
 
-  it 'adds a second new node to the right side' do
+  it 'adds a second higher value node to the right side' do
     root = tree.root
     tree.add_node(2)
     tree.add_node(3)
 
-    assert_equal root.left_child.data, 2
+    assert_equal root.right_child.data, 2
+    assert_equal root.right_child.right_child.data, 3
+  end
+
+  it 'correctly adds nodes if not in order' do
+    root = tree.root
+    tree.add_node(3)
+    tree.add_node(2)
+
     assert_equal root.right_child.data, 3
+    assert_equal root.right_child.left_child.data, 2
   end
 end
