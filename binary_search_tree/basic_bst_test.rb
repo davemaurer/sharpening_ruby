@@ -20,6 +20,7 @@ describe BasicBinarySearchTree do
   end
 
   it 'can accept a new node' do
+    root = tree.root
     tree.add_node(2)
 
     assert_equal root.left_child.data, 2
