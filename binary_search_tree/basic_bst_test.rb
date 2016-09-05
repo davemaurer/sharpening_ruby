@@ -3,8 +3,19 @@ require 'minitest/pride'
 require_relative 'basic_bst'
 
 describe BasicBinarySearchTree do
-  it 'it starts out with a root' do
-    tree = BasicBinarySearchTree.new
+  def tree
+    @tree ||= BasicBinarySearchTree.new
+  end
+
+  it 'starts out with a root' do
     assert tree.root
+  end
+
+  it 'has information about its value, left child, and right child in its root node' do
+    root = tree.root
+
+    assert_equal root.data, 1
+    assert_equal root.left_child, nil
+    assert_equal root.right_child, nil
   end
 end

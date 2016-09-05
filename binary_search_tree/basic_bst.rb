@@ -4,6 +4,6 @@ class BasicBinarySearchTree
   attr_reader :root
 
   def initialize
-    @root = TreeNode.new
+    @root = TreeNode.new(1)
   end
 end
