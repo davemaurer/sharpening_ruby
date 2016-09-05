@@ -18,4 +18,10 @@ describe BasicBinarySearchTree do
     assert_equal root.left_child, nil
     assert_equal root.right_child, nil
   end
+
+  it 'can accept a new node' do
+    tree.add_node(2)
+
+    assert_equal root.left_child.data, 2
+  end
 end
