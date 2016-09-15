@@ -79,4 +79,15 @@ class SinglyLinkedList
     end
     counter
   end
+
+  def all_nodes
+    return 'This list has no nodes' if head.tail?
+    current_node = head.next_node
+    nodes = []
+    until current_node.nil?
+      nodes << current_node.data
+      current_node = current_node.next_node
+    end
+    return nodes
+  end
 end
