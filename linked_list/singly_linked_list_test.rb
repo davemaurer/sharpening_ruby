@@ -113,4 +113,16 @@ class SinglyLinkedListTest < Minitest::Test
 
     assert_equal 4, list.count
   end
+
+  def test_it_can_return_all_nodes
+    list.push_node('Chewy')
+    list.push_node('Han')
+    list.push_node('Hoth')
+
+    assert_equal %w(Chewy Han Hoth), list.all_nodes
+  end
+
+  def test_it_tells_you_when_you_ask_for_all_nodes_in_an_empty_list
+    assert_equal 'This list has no nodes', list.all_nodes
+  end
 end
