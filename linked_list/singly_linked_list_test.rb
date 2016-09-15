@@ -18,6 +18,10 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 'Jedi', list.head.next_node.data
   end
 
+  def test_it_has_a_name
+    assert_equal 'MyList', (list.name)
+  end
+
   def test_find_tail
     list.push_node('Jedi')
 

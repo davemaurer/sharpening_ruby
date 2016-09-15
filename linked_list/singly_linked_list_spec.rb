@@ -7,6 +7,10 @@ describe SinglyLinkedList do
     expect(list.head.data).to eq('head')
   end
 
+  it 'has a name' do
+    expect(list.name).to eq('MyList')
+  end
+
   it 'can add nodes' do
     list.push_node('Sith')
 
