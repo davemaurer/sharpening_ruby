@@ -65,3 +65,21 @@ end
 # Procs are executed with .call, just like lambdas
 my_proc.call(3, 4) #(from 1 above) => 7
 no_arg_proc #(from 2 above) => This is a proc with no arguments
+
+#Stand alone procs invoked outside of another function will not handle a return statement as a method would,
+# because you can't use the return keyword inside of a block. The block will automatically handle the return for
+# you. Ex:
+this_bad_proc = Proc.new do |a|
+  return a
+end
+
+# then when we invoke it...
+this_bad_proc.call(5) # => LocalJumpError: unexpected return
+
+# but if we do...
+this_other_proc = Proc.new do |a|
+  a
+end
+
+# then we are ok
+this_other_proc.call("Cool") # => Cool
