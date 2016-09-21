@@ -83,3 +83,44 @@ end
 
 # then we are ok
 this_other_proc.call("Cool") # => Cool
+
+=begin
+Procs differ from lambdas in how they handle argument assignment semantics. Procs assign missing arguments to nil
+automatically, while lambdas will give a no argument error. For example:
+=end
+proc = Proc.new do |a|
+  a + 10
+end
+
+#then if we invoke our proc with no argument
+proc.call  # we get => nil
+
+# But a lambda will...
+l = -> (a) { a }
+
+l.call  #< no arg given back there => ArgumentError: wrong number of arguments (given 0, expected 1)
+
+# The proc behavior of assigning missing args to nil allows you to easily set up conditionals for missing arguments
+# when multiple arguments are being passed in. For example:
+multi_arg_proc = Proc.new do |a, b, c|
+  if c.nil?
+    a + b
+  else
+    a + b + c
+  end
+end
+
+multi_arg_proc.call(1, 2) # => 3
+multi_arg_proc.call(1, 2, 3) # => 6
+
+#Putting that proc inside of a method would look like this (and then you could use return statements if you wanted)
+def my_method(a=nil, b=nil, c=nil)
+  proc = Proc.new do
+    if c.nil?
+      return a + b
+    else
+      return a + b + c
+    end
+  end
+  proc.call(a, b ,c)
+end
