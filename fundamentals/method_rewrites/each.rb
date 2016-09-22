@@ -16,3 +16,6 @@ a = %w(dog cat house tree)
 a.my_each do |el|
   puts 'The ' + el
 end
+
+# Map
+

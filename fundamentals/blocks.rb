@@ -11,6 +11,15 @@ use_my_block do
   puts "This is the actual block"   # <- This entire line is the actual block. Not the do, or the end.
 end
 
+# The yield keyword can take parameters(another name for arguments). Example:
+def say_name(name)
+  yield(name)
+end
+
+say_name('Bob!') do |name|
+  puts name
+end
+
 # This will output => This is the actual block
 # The block is the same if it is done like this (which is called "inline") - so this is an inline block below:
 
@@ -39,3 +48,22 @@ def my_thing(given_array, given_number)
 end
 nums = %w(1 2 3 4 5)
 my_thing(nums, 5) # Gives us => [6, 7, 8, 9, 10]
+
+
+# Blocks are not objects, like most everything else in Ruby, BUT, blocks can be transformed into procs that ARE
+# objects. To do this we use &block as the last argument passed to a method calling the block. Example:
+
+def call_block(&block)
+  puts block
+  block.call
+end
+
+call_block { "Hello" } # Gives us => Hello.
+
+# You can also use more arguments. Example:
+
+def call_another_block(a, &block)
+  puts a + block.call
+end
+
+call_another_block("Hi") { " there" }
