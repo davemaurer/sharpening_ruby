@@ -27,11 +27,11 @@ make_dog_bark = 'killer says raawwwrr!'
 # containers. So the big difference between variables and methods, is that methods take arguments.
 
 def make_dog_bark(dog_that_is_the_argument_being_passed_in)
-  dog_that_is_the_argument_being_passed_in + ' rawwwrrr!'
+  dog_that_is_the_argument_being_passed_in + ' rawwwrr!'
 end
 
 # Now, we can do this when executing/calling/invoking the method above:
 
-make_dog_bark('killer') # => 
+make_dog_bark('killer') # => killer says rawwwrr!
 
 
