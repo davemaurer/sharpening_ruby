@@ -21,33 +21,36 @@
 
 a
 
-# a above by itself is not a variable, and if you try to call/invoke it you will get an undefined error.
+# a above by itself is not a variable, and if you try to call/invoke it you will get an undefined error. BUT. We can do this:
 
 a = 'something'
 
-# This is a variable assignment, or declaration, or definition. All of those mean the same thing, which is take a thing (value)
-# and give it a name so you can use that thing later. When the variable is called/invoked, it gives you it's value.
+# This is a variable assignment, or declaration, or definition. All of those mean the same thing, which is take a thing (in this
+# case a string value) and give it a name so you can use that thing later. Now, when the variable is called/invoked, it gives you it's value:
 
 a # => "something"
 
-# The letter a will now give you the string 'something' if you try to call/invoke it.
+# Variables can hold pretty much any object as a value. For example we can assign a method to a variable which will give us the value the
+# method resolves to(resolves to is another way to say it's return value).
 
 def print_hello
   'hello'
 end
 
+# Assign the value of the method print_hello to the variable b.
 b = print_hello
 
-# the method print_hello is now assigned to the variable b. Remember that the variable b now stores
-# the VALUE that print_hello resolves to, not the method itself, so calling b, like below...
+# Remember that the variable b now stores the VALUE that print_hello resolves to, not the method itself, so calling b, gives us the return
+# value of the print_hello method:
 
 b # => "hello"
 
 
-# Things to note: A variable is not the value you assign it, it is a reference to the value that is stored in memory. When you
-# invoke/call a variable, the ruby 'engine' will go find the value attached to the variable and give it to you.
+# Things to note: A variable is not actually the value you assign it, it is a reference to the value that is stored in memory. When you
+# invoke/call a variable, Ruby will go find the value attached to the variable and give it to you. Not crucial to learning how to use
+# the Ruby language at first, but something to keep in mind for later when you want a deeper understanding.
 
-# A variable's value can be a class. If you had a class:
+# As we said above, a variable's value can be almost any object, including a class. So if you had a class:
 
 class Dog
   def bark
@@ -55,7 +58,9 @@ class Dog
   end
 end
 
+# Then you can assign an instance of the class Dog to a variable reference.
 fido = Dog.new
+# Then you can call that variable and use the bark method that is now inside of it.
 fido.bark # => "Arf!"
 
 # The variable fido now references (holds the value of) a new instance of the class Dog, and we can go one step further,
@@ -135,3 +140,16 @@ def say_dog_name
 end
 
 say_dog_name # => "Killer"
+
+# So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections are usually
+# Arrays [] and Hashes {}.
+
+# So we can define a variable that holds two string values, inside of an array.
+two_strings = ['String one is at index 0', 'String two is at index 1']
+
+# And now if we want to access 'string_one' we can use the array's index:
+two_strings[0] # => "String one is at index 0"
+# Aaaannnnnd for the second value?
+two_strings[1] # => "String two is at index 1"
+
+
