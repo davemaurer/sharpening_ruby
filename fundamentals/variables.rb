@@ -5,6 +5,9 @@
   it affects your code.
 =end
 
+# NOTE: Whenever you see =>, that means 'evaluates to', or 'gives us'. It's a way of saying equals without confusing it with
+# the equals assignment operator in code.
+
 a
 
 # This by itself is not a variable, and if you try to call/invoke it you will get an undefined error.
