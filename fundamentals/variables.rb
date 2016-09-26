@@ -54,4 +54,16 @@ rex = Dog.new
 rex_bark = rex.bark
 rex_bark # => 'Arf!'
 
+# Variables can also be designated as 'instance variables' when they are defined/created/declared (these all mean the same thing).
+# You do this by...starting the variable out with the @ symbol. That's it. Not it's an instance variable. For example:
+
+@name = 'Bob'
+
+# What that does is allow the variable to passed to anything within the scope of environment it was created in. (Wat!!)
+# If that's confusing don't worry, it just takes exposure to see the pattern. For now, let's say that every class and
+# method you create in Ruby will have it's own scope, and if you try to use a variable that has been defined outside of
+# that scope, Ruby will say, 'Hey! I don't have that reference!'. Example:
+
+# We have a variable, declared in the global scope, meaning it's not inside of a another object (class, method, etc.)
+
 
