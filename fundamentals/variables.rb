@@ -111,8 +111,27 @@ say_dog_name # => "Killer"
 # So for example, since my @dog_name variable was defined in the global scope, pretty much every object I make has access to it.
 # But what if I define it inside of a method?. Let's do that:
 
+# Define a method with an instance variable inside of it.
 def dog_name
   @name = 'Killer'
 end
 
+# And now we will make another method that will try to use our instance variable, @name. Not the return of the method, but the variable
+# inside of it.
 
+def say_dog_name
+  @name
+end
+
+say_dog_name # => nil
+
+# Wat! The reason this doesn't work is because @name was defined inside of method dog_name. So it's only available inside of the scope
+# of tha the method dog_name. Buuuuuuuut since objects can carry their scope around with them, we can get at that variable by using
+# the value of the method instead of trying to use the value of the instance variable inside of it. Let's do that.
+
+# Define out method and set it's return value to be the value of the method dog_name. This gives us access to the variable inside of dog_name.
+def say_dog_name
+  dog_name
+end
+
+say_dog_name # => "Killer"
