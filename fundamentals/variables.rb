@@ -15,17 +15,21 @@
   3. Define/declare: These two mean the same thing basically. When you create something, like a variable, or a method (def is
      short for define by the way), or a class, etc., you are said to be defining, or declaring it. Then when you go to use the
      thing you created, that's when the call/invoke/execute stuff comes in.
+  4. There are two types of variable in Ruby. Local variables, and instance variables. The way they sound is the way they act, meaning
+     a local variable is ONLY accessible within it's 'local scope', while and instance variable is accessible anywhere within the
+     scope of the instance it is defined in. It's easy to tell local from instance. Just look for the @ in the front. The variable
+     x is a local variable. The variable @x is an instance variable, assuming they each were defined already.
 =end
 
-# So let's say we want a variable. Can we just do this?
+# So let's say we want a local variable. Can we just do this?
 
 a
 
-# a above by itself is not a variable, and if you try to call/invoke it you will get an undefined error. BUT. We can do this:
+# a above by itself is not a local variable, and if you try to call/invoke it you will get an undefined error. BUT. We can do this:
 
 a = 'something'
 
-# This is a variable assignment, or declaration, or definition. All of those mean the same thing, which is take a thing (in this
+# What we just did is a variable assignment, or declaration, or definition. All of those mean the same thing, which is take a thing (in this
 # case a string value) and give it a name so you can use that thing later. Now, when the variable is called/invoked, it gives you it's value:
 
 a # => "something"
@@ -131,17 +135,21 @@ end
 
 say_dog_name # => nil
 
-# Wat! The reason this doesn't work is because @name was defined inside of method dog_name. So it's only available inside of the scope
-# of tha the method dog_name. Buuuuuuuut since objects can carry their scope around with them, we can get at that variable by using
-# the value of the method instead of trying to use the value of the instance variable inside of it. Let's do that.
+# Wat! The reason this doesn't work is because @name was defined inside of the method dog_name. So it's only available inside of the SCOPE
+# of tha the method dog_name. Buuuuuuuut since objects can carry their scope around with them (this is called closure, and will be covered later),
+# we can get at that variable by using the value of the method instead of trying to use the value of the instance variable inside of it. Let's do that.
 
-# We define a method named say_dog_name and inside of it, we call the method dog_name we defined above in example 2. This gives us
-# access to the variable inside of dog_name.
+# We define a method named say_dog_name and inside of it, we call the method dog_name that we defined above in example 2. This gives us
+# access to the @name variable inside of dog_name.
 def say_dog_name
   dog_name
 end
 
 say_dog_name # => "Killer"
+
+# Ok how did that work? First, scope is restricted the environment inside of a Ruby object, so the object dog_name, which happens to be a method has access to...
+# the variable @name, because @name is inside of it. So, wherever we call the method dog_name, we have access to the value of @name.
+
 
 # So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections are usually
 # Arrays objects [1, 2, 3] and Hash objects {one: 1, two: 2, three: 3}.
