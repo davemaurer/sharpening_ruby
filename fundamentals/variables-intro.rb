@@ -18,11 +18,12 @@
      short for define by the way), or a class, etc., you are said to be defining, or declaring it. Then when you go to use the
      thing you created, that's when the call/invoke/execute stuff comes in.
 
-  4. There are two types of variable in Ruby. Local variables, and instance variables. The way they sound is the way they
+  4. There are two MAIN types of variable in Ruby. Local variables, and instance variables. The way they sound is the way they
      act, meaning a local variable is ONLY accessible within it's 'local scope', while and instance variable is accessible
      anywhere within the scope of the instance it is defined in. It's easy to tell local from instance. Just look for the
      @ in the front. The variable x is a local variable. The variable @x is an instance variable, assuming they each were
-     defined already.
+     defined already. Ruby has two other variable types called global variables and class variables. Don't worry about those
+     for now. Seriously. You could write good ruby code for the next 10 years without ever having to worry about those two.
 
   5. A variable is not actually the value you assign it, it is a reference to the value that is stored in memory. When you
      invoke/call a variable, Ruby will go find the value attached to the variable and give it to you. Not crucial to
