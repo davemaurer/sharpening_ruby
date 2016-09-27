@@ -68,7 +68,6 @@ b = print_hello
 # Call/invoke the local variable b.
 b # => "hello"
 
-
 # As we said above, a variable's value can be almost any object, including a class. So if you had a class like this one, Dog:
 
 class Dog
@@ -93,6 +92,24 @@ rex_bark = rex.bark
 # Call/invoke the local variable rex_bark
 rex_bark # => "Arf!"
 
+=begin
+***** Exercise *****
+open your terminal and start up irb/pry whatever you use to write code in your terminal.
+declare a local variable named x, and assign a string as the value. Any string you want.
+call the variable.
+Now do that again, but tell yourself, out loud, what you are doing as you are doing it. Look below for the things you
+should be saying.
+
+1. As you type x, should be saying, I'm typing the letter x, because that's all it is right now.
+2. As you type the equals sign, you should be saying, I'm typing the 'equals' assignment operator in preparation for my value.
+3. As you type the string, you should be saying, I'm assigning the string value (say the string name), to variable x.
+
+Ok now do that again at least five times. Use a number, a boolean, nil, and whatever else you want. This is no joke. It
+takes repetition and exposure for this stuff to sink in. It's like push ups. You don't think as you are doing each push
+up, oh boy I'm really making progress, but put 10000 push ups together and you are probably pretty in shape, or at least
+your chest is. These are your push ups. So do five, or ten if you want.
+=end
+
 # Variables can also be designated as 'instance variables' when they are defined/created/declared (these all mean the same
 # thing). You do this by...starting the variable out with the @ symbol. That's it. Now it's an instance variable instead
 # of a local variable. For example:
@@ -104,7 +121,6 @@ rex_bark # => "Arf!"
 # If that's confusing don't worry, it just takes exposure to see the pattern. For now, let's say that every class and
 # method you create in Ruby will have it's own scope, and if you try to use a variable that has been defined outside of
 # that scope, Ruby will say, 'Hey! I don't have that reference!'. Example:
-
 
 # Let's make a variable, defined/declared in the global scope, meaning it's not inside of another object (class, method, etc.)
 dog_name = 'Killer'
@@ -218,6 +234,15 @@ inside of a method say_dog_name, that is in turn inside of a class named Dog, yo
 You're going two layers deep into the scope of the Dog object to find that variable. If you just call dog_name in the global
 scope, you get nada. If you call Dog.new.dog_name? Same thing. It can't see the variable you want until you tell it to dig
 deep enough.
+
+***** Exercise *****
+
+Open your REPL again. (Whatever you use to write code in your terminal (irb, etc.) is called a REPL.)
+Assign a number value (you pick) to a LOCAL variable named y.
+define a method named number_doubler, and let that method accept a PARAMETER, named number, then times that
+parameter by itself inside the method.
+call the number_doubler method, PASSING IN the variable y as the ARGUMENT.
+
 =end
 
 # So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections
