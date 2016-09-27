@@ -170,6 +170,7 @@ say_dog_name # => nil
 # of a class named Dog. Instance variables can't be seen by OTHER objects that are in a higher scope, or in the same scope.
 # To clarify, if we had that Dog class and the instance variable was declared inside the class, but not inside a particular
 # method, all methods inside the class would be able to access it. Let's do that:
+
 class Dog
   @name = 'Killer'
 
@@ -187,7 +188,6 @@ end
 dog = Dog.new
 dog.growl # => "Killer says grrrrrr!"
 dog.speak # => "Killer says ruff!"
-
 
 # Now both of the methods in the Dog class can access the variable @name, and that's primarily the use for instance variables,
 # so they can be passed around inside of the object they live in.
