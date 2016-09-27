@@ -19,6 +19,12 @@
      a local variable is ONLY accessible within it's 'local scope', while and instance variable is accessible anywhere within the
      scope of the instance it is defined in. It's easy to tell local from instance. Just look for the @ in the front. The variable
      x is a local variable. The variable @x is an instance variable, assuming they each were defined already.
+  5. A variable is not actually the value you assign it, it is a reference to the value that is stored in memory. When you
+     invoke/call a variable, Ruby will go find the value attached to the variable and give it to you. Not crucial to learning how to use
+     the Ruby language at first, but something to keep in mind for later when you want a deeper understanding. If you want to keep it in mind now,
+     just remember every time I say things like 'we now assign that value to a variable', what I'm really saying is, we now assign that value to
+     a variable reference, which is stored in local memory for us. It will not hurt you at all though to just think of a variable as the value you
+     assign to it. Plenty of time for computer theory stuff later.
 =end
 
 # So let's say we want a local variable. Can we just do this?
@@ -42,21 +48,17 @@ def print_hello
   'hello'
 end
 
-# Assign the value of the method print_hello to the variable b.
+# Assign the value of the method print_hello to the local variable b.
 b = print_hello
 
-# Remember that the variable b now stores the VALUE that print_hello resolves to, not the method itself, so calling b, gives us the return
+# Remember that the local variable b now stores the VALUE that print_hello resolves to, not the method itself, so calling b, gives us the return
 # value of the print_hello method:
 
-# Call/invoke the variable b.
+# Call/invoke the local variable b.
 b # => "hello"
 
 
-# Things to note: A variable is not actually the value you assign it, it is a reference to the value that is stored in memory. When you
-# invoke/call a variable, Ruby will go find the value attached to the variable and give it to you. Not crucial to learning how to use
-# the Ruby language at first, but something to keep in mind for later when you want a deeper understanding.
-
-# As we said above, a variable's value can be almost any object, including a class. So if you had a class:
+# As we said above, a variable's value can be almost any object, including a class. So if you had a class like this one, Dog:
 
 class Dog
   def bark
@@ -64,28 +66,28 @@ class Dog
   end
 end
 
-# Then you can assign an instance of the class Dog to a variable reference.
+# Then you can assign an instance of the class Dog to a local variable, which you decide to name fido.
 fido = Dog.new
-# Then you can call that variable and use the bark method that is now inside of it.
+# Then you can call that local variable and use the bark method that is now inside of it.
 fido.bark # => "Arf!"
 
-# The variable fido now references (holds the value of) a new instance of the class Dog, and we can go one step further,
+# The variable fido now references (holds the value of) a new instance of the class Dog, and we can go one step further
 # by assigning the new class Dog's bark method to a variable, like this...
 
-# Assign a new class instance to a variable reference, and we call it rex.
+# Assign a new class instance to a local variable, and we decide to call it rex.
 rex = Dog.new
-# Assign the result of calling .bark on our new variable, which references the class instance we assigned above. (Don't go crossed-eyed)
+# Assign the result of calling .bark on our local variable rex, to another local variable we will call rex_bark.  (Don't go crossed-eyed)
 rex_bark = rex.bark
-# Call/invoke the variable rex_bark
+# Call/invoke the local variable rex_bark
 rex_bark # => "Arf!"
 
 # Variables can also be designated as 'instance variables' when they are defined/created/declared (these all mean the same thing).
-# You do this by...starting the variable out with the @ symbol. That's it. Not it's an instance variable. For example:
+# You do this by...starting the variable out with the @ symbol. That's it. Now it's an instance variable instead of a local variable. For example:
 
 # example 1
 @name = 'Bob'
 
-# What that does is allow the variable to passed to anything within the scope of environment it was created in. (Wat!!)
+# What that does is allow the variable to be passed to anything within the scope of environment it was created in. (Wat!!)
 # If that's confusing don't worry, it just takes exposure to see the pattern. For now, let's say that every class and
 # method you create in Ruby will have it's own scope, and if you try to use a variable that has been defined outside of
 # that scope, Ruby will say, 'Hey! I don't have that reference!'. Example:
