@@ -85,9 +85,5 @@ make_dog_bark(killer)
 # We are still passing in a class, but this time it's just represented by the variable, killer, which we assigned the value of
 # the class instance to. (An instance of a class is just a short way of saying 'this class object I created using the .new method')
 # NOTE: Don't confuse an instance of a class with an instance variable. They are not exactly the same concept. Programmers make
-# terms up just like scientists do (Newton's Law) to explain concepts, and they don't always directly correlate. The term
-# instance variable DOES relate to a class instance in that instance variables are usually declared inside of a class's
-# scope so that they can be used everywhere.
-
-# Methods CAN be used in all of the above ways, but they are really showcased when they take
-
+# terms up just like scientists do (Newton's Law) to explain concepts, and they don't always directly correlate. Learn what a
+# class instance is, and what an instance variable is, and know the difference. Both concepts are covered in this guide.
