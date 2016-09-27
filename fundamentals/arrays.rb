@@ -44,5 +44,6 @@ def numbers_plus_one
   @numbers.each { |number| number += 1 }
 end
 
-# Now we can call/invoke/execute the method. Notice that calling a method looks the same as calling a variable.
+# Now we can call/invoke/execute the method. Notice that calling a method looks the same as calling a variable? Name your stuff
+# carefully! Some programmers like to name variables like nouns, and methods like verbs.
 numbers_plus_one # => [2, 3, 4, 5, 6]
