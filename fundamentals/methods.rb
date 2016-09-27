@@ -65,13 +65,18 @@ make_dog_bark(dog)
 # example 4
 class Dog
   def dog(name_for_dog)
-    name_for_dog # Remember, we can put return at the beginning if we want, but it's not required because ruby does it for us automatically.
+    name_for_dog # Remember, we can put return at the beginning if we want, but it's not required because ruby does it for us.
   end
 end
 
+# NOTE: Not having to use return to get the last value resolved in a method is something Ruby uses, called implicit return.
+# This works great MOST of the time. Be careful with .each and some enumerables. Learn which don't actually give you back
+# a value. Those you will have to use return on.
+
 make_dog_bark(Dog.new('Killer')) # => Killer says raawwwrr!
 
-# And this next example is the exact same thing as example 4:
+# And this next example is the exact same thing as example 4. It just uses better coding style, first assigning the new
+# class instance of Dog to a variable named killer, then passing the variable killer to the make_dog_bark method:
 
 killer = Dog.new('Killer')
 
@@ -80,7 +85,9 @@ make_dog_bark(killer)
 # We are still passing in a class, but this time it's just represented by the variable, killer, which we assigned the value of
 # the class instance to. (An instance of a class is just a short way of saying 'this class object I created using the .new method')
 # NOTE: Don't confuse an instance of a class with an instance variable. They are not exactly the same concept. Programmers make
-# terms up just like scientists do (Newton's Law), and they don't always directly correlate.
+# terms up just like scientists do (Newton's Law) to explain concepts, and they don't always directly correlate. The term
+# instance variable DOES relate to a class instance in that instance variables are usually declared inside of a class's
+# scope so that they can be used everywhere.
 
 # Methods CAN be used in all of the above ways, but they are really showcased when they take
 
