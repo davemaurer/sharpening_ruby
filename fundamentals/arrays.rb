@@ -38,11 +38,11 @@ numbers_plus_one # => [2, 3, 4, 5, 6]
 
 # Now let's do the same thing, but store the result in a method instead of a new local variable. And let's use an in instance
 # variable for numbers so we can define it outside of the method. Like this:
+
 @numbers = [1, 2, 3, 4, 5]
 def numbers_plus_one
   @numbers.each { |number| number += 1 }
 end
 
-# Array elements can be ANY object. That is, arrays can hold anything a variable can hold. You could make five different
-# methods and store them in an array, then iterate over the array in order to call the methods one by one.
-
+# Now we can call/invoke/execute the method. Notice that calling a method looks the same as calling a variable.
+numbers_plus_one # => [2, 3, 4, 5, 6]
