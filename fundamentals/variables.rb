@@ -33,6 +33,7 @@ a # => "something"
 # Variables can hold pretty much any object as a value. For example we can assign a method to a variable which will give us the value the
 # method resolves to(resolves to is another way to say it's return value).
 
+# Define a method, print_hello, who's return value is the string 'hello'.
 def print_hello
   'hello'
 end
@@ -43,6 +44,7 @@ b = print_hello
 # Remember that the variable b now stores the VALUE that print_hello resolves to, not the method itself, so calling b, gives us the return
 # value of the print_hello method:
 
+# Call/invoke the variable b.
 b # => "hello"
 
 
@@ -116,14 +118,13 @@ say_dog_name # => "Killer"
 # So for example, since my @dog_name variable was defined in the global scope, pretty much every object I make has access to it.
 # But what if I define it inside of a method?. Let's do that:
 
-# Define a method with an instance variable inside of it.
+# example 2: Define a method with an instance variable inside of it.
 def dog_name
   @name = 'Killer'
 end
 
 # And now we will make another method that will try to use our instance variable, @name. Not the return of the method, but the variable
 # inside of it.
-
 def say_dog_name
   @name
 end
@@ -134,7 +135,8 @@ say_dog_name # => nil
 # of tha the method dog_name. Buuuuuuuut since objects can carry their scope around with them, we can get at that variable by using
 # the value of the method instead of trying to use the value of the instance variable inside of it. Let's do that.
 
-# Define out method and set it's return value to be the value of the method dog_name. This gives us access to the variable inside of dog_name.
+# We define a method named say_dog_name and inside of it, we call the method dog_name we defined above in example 2. This gives us
+# access to the variable inside of dog_name.
 def say_dog_name
   dog_name
 end
@@ -142,7 +144,14 @@ end
 say_dog_name # => "Killer"
 
 # So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections are usually
-# Arrays [] and Hashes {}.
+# Arrays objects [1, 2, 3] and Hash objects {one: 1, two: 2, three: 3}.
+
+# Two examples of variables that store multiple values by using collection objects.
+# Assign an array object to the variable two_strings.
+two_strings = ['String one is at index 0', 'String two is at index 1']
+# Assign a hash object to the variable number_hash.
+number_hash = {one: 1, two: 2, three: 3}
+
 
 # So we can define a variable that holds two string values, inside of an array.
 two_strings = ['String one is at index 0', 'String two is at index 1']
@@ -151,5 +160,16 @@ two_strings = ['String one is at index 0', 'String two is at index 1']
 two_strings[0] # => "String one is at index 0"
 # Aaaannnnnd for the second value?
 two_strings[1] # => "String two is at index 1"
+
+# So. In the above examples, we store ONE object, an array, which itself contains multiple values. Those values are also
+# objects, but for now just think of arrays and hashes as objects that can store multiple values. Let's do a hash.
+
+# We assign a hash to a variable.
+number_hash = {one: 1, two: 2, three: 3}
+
+# Now we can grab any of the three values stored as key value pairs. Let's grab the value of the one key:
+number_hash[:one] # => 1
+# We can also get the 'value' of the first key, which is the one: symbol.
+number_hash.key(1)
 
 
