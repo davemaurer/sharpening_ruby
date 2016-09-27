@@ -14,9 +14,9 @@
      can execute code, you can say call, invoke, or execute. You COULD say execute when talking about variables if you
      wanted, but variables don't really execute anything, they just return the value they reference.
 
-  3. Define/declare: These two mean the same thing basically. When you create something, like a variable, or a method (def is
-     short for define by the way), or a class, etc., you are said to be defining, or declaring it. Then when you go to use the
-     thing you created, that's when the call/invoke/execute stuff comes in.
+  3. Define/declare: In Ruby, these two mean the same thing basically. When you create something, like a variable, or a
+     method (def is short for define by the way), or a class, etc., you are said to be defining, or declaring it. Then
+     when you go to use the thing you created, that's when the call/invoke/execute stuff comes in.
 
   4. There are two MAIN types of variable in Ruby. Local variables, and instance variables. The way they sound is the way they
      act, meaning a local variable is ONLY accessible within it's 'local scope', while and instance variable is accessible
@@ -35,7 +35,7 @@
 
   6. Naming. When variables are called in code, they look just like methods called in code, so many programmers name
      things carefully. This is a good habit to form. How you do it is a stylistic choice. Some like to use noun-likes for
-     variables, and verb-likes for methods. i.e cat for a variable say_cat_name for a method. If you said cat_name as the
+     variables, and verb-likes for methods. i.e cat for a variable, say_cat_name for a method. If you said cat_name as the
      method, that would be potentially confusing to someone reading your code.
 =end
 
@@ -101,9 +101,10 @@ call the variable.
 Now do that again, but tell yourself, out loud, what you are doing as you are doing it. Look below for the things you
 should be saying.
 
-1. As you type x, should be saying, I'm typing the letter x, because that's all it is right now.
+1. As you type x, you should be saying, I'm typing the letter x, because that's all it is right now.
 2. As you type the equals sign, you should be saying, I'm typing the 'equals' assignment operator in preparation for my value.
-3. As you type the string, you should be saying, I'm assigning the string value (say the string name), to variable x.
+3. As you type the string, you should be saying, I'm assigning the string value (say the string name), to variable x. I
+   have now made a variable assignment.
 
 Ok now do that again at least five times. Use a number, a boolean, nil, and whatever else you want. This is no joke. It
 takes repetition and exposure for this stuff to sink in. It's like push ups. You don't think as you are doing each push
@@ -218,7 +219,7 @@ end
 say_dog_name # => "Killer"
 
 # Ok how did that work? First, scope is restricted the environment inside of a Ruby object, so the object dog_name, which
-# happens to be a method has access to...the variable @name, because @name is inside of it. So, wherever we call the method
+# happens to be a method, has access to the variable @name, because @name is inside of it. So, wherever we call the method
 # dog_name, we have access to the value of @name. Just think of every object that has variables inside as a container, and
 # when you call that object, you now access to what it carries inside. Let's make a real world comparison:
 
