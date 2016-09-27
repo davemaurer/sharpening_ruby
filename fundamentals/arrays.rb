@@ -15,8 +15,9 @@ two_strings[1] # => "String two is at index 1"
 # Assign an array of numbers as the value of a local variable we will call...numbers.
 numbers = [1, 2, 3, 4, 5]
 
-# Iterate over the array and add 1 to each element.
-numbers.each do |element|
+# Iterate over the array and add 1 to each element, OH, and also assign that outcome to a variable, because .each doesn't
+# actually return anything (Just let that last part gloss over for now. You will remember it better later.).
+numbers_plus_one = numbers.each do |element|
   element = element + 1
 end
 
@@ -25,7 +26,23 @@ end
 # 2. Changing the name of the iterator from element to number. This can be any name you want it to be, and sometimes you will
 #    see it named e, or el, for element.
 # 3. Using the += assignment operator. += is a a built-in shorthand method in Ruby. x += 1 is the same as x = x + 1.
-numbers.each { |number| number += 1 }
+# 4. Switch the order of the iterator and the number we want to add to it. Instead of number += 1 we will do 1 += number. It
+#    doesn't matter what order they go in.
+numbers = [1, 2, 3, 4, 5]
+numbers_plus_one = numbers.each { |number| 1 += number }
+# Now we call the variable numbers_plus_one, and it gives us our new array:
+numbers_plus_one # => [2, 3, 4, 5, 6]
 
 # Ruby, like english has different ways to 'say' the same thing. Think of the above two ways to write use the .each method as
 # the words hi, and hello. They both do the same thing, they are just spelled differently.
+
+# Now let's do the same thing, but store the result in a method instead of a new local variable. And let's use an in instance
+# variable for numbers so we can define it outside of the method. Like this:
+@numbers = [1, 2, 3, 4, 5]
+def numbers_plus_one
+  @numbers.each { |number| number += 1 }
+end
+
+# Array elements can be ANY object. That is, arrays can hold anything a variable can hold. You could make five different
+# methods and store them in an array, then iterate over the array in order to call the methods one by one.
+
