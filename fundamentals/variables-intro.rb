@@ -141,11 +141,14 @@ say_dog_name # => "Killer"
 
 # Now it works, because the @ sign tells Ruby to treat @dog_name as 'accessible' to all 'lower scopes'. What I mean by lower
 # scopes is, any method or other object that could use this variable, that is defined within the object where this variable was
-# defined. Read that a couple of times if it's confusing, and remember it take exposure to sink in.
+# defined. Read that a couple of times if it's confusing, and remember it takes exposure to sink in.
 
 # So for example, since my @dog_name variable was defined in the global scope, pretty much every object I make has access
-# to it. But what if I define it inside of a method?. Does that change the scope, and thus, change how I can access it?
-# You bet is does. Let's do that to see what happens:
+# to it, thanks to it being an instance variable. But instance variables can only be accessed by inner objects, meaning
+# anything defined inside of the object where you defined the instance variable.
+# To illustrate, what if I define my instance variable inside of a method?. Does that mean the global scope (when I say
+# 'global', I'm referring to the global object, which is a thing. Kind of like the universe to Ruby.) can no longer
+# see it? You bet is does. Let's do that to see what happens:
 
 # example 2: Define a method with an instance variable inside of it.
 def dog_name
@@ -163,7 +166,31 @@ say_dog_name # => nil
 # inside of the SCOPE of the method dog_name, any scope further down (any 'inner' scope). All 'outer' scopes can't see
 # that variable. Buuuuuuuut since objects can carry their scope around with them (this is called closure, and will be
 # covered later), we can get at that variable by using the value of the method instead of trying to use the value of the
-# instance variable inside of it. Let's do that.
+# instance variable inside of it. Let's do that. The same thing would happen even if we put both of the above methods inside
+# of a class named Dog. Instance variables can't be seen by OTHER objects that are in a higher scope, or in the same scope.
+# To clarify, if we had that Dog class and the instance variable was declared inside the class, but not inside a particular
+# method, all methods inside the class would be able to access it. Let's do that:
+class Dog
+  @name = 'Killer'
+
+  def growl
+    @name + ' says grrrrrr!'
+  end
+
+  def speak
+    @name + ' says ruff!'
+  end
+end
+
+# Now we call both methods, after instantiating our Dog class of course.
+
+dog = Dog.new
+dog.growl # => "Killer says grrrrrr!"
+dog.speak # => "Killer says ruff!"
+
+
+# Now both of the methods in the Dog class can access the variable @name, and that's primarily the use for instance variables,
+# so they can be passed around inside of the object they live in.
 
 # We will define a method named say_dog_name and inside of it, we will call the method dog_name that we defined above in
 # example 2. This gives us access to the @name variable inside of dog_name.
@@ -180,14 +207,17 @@ say_dog_name # => "Killer"
 
 =begin
 Cat Woman is burgling and needs a lockpick to get past a door. She knows it is inside her lockpick bag outside. So she radios
-to her side kick Batman, who is waiting outside, holding the lockpick bag. "Hey go get me a lockpick." "No problem", says Batman,
-but then he gets back on the radio and says, "I don't see a lockpick out here". Cat Woman shakes her head, remembering that
-Batman has been in a lot of punching matches where he gets hit in the head. "It's inside of the lockpick bag." "Ahah!" says
-Batman, "I found it.".
-In Ruby, you need to treat scoped variables like the lockpick inside the lockpick bag. Tell Ruby exactly where to look, because
-it's not smart enough to figure out where you want it to look. To get to the variable dog_name, inside of a method say_dog_name,
-that is in turn inside of a class named Dog, you will have to tell Ruby: Dog.new.say_dog_name. You going two layers deep into
-the scope of the Dog object to find that variable.
+to her sidekick, Batman, who is waiting outside, holding the lockpick bag. "Hey, go get me a lockpick." Cat Woman says "No
+problem", says Batman, but then he gets back on the radio and says, "I don't see a lockpick out here". Cat Woman shakes
+her head, remembering that Batman has been in a lot of fights where his noggin gets hit. "It's inside of the lockpick bag."
+"Ahah!" says Batman, "I found it.".
+
+In Ruby, you need to treat variables declared inside of objects like the lockpick inside the lockpick bag. Tell Ruby exactly
+where to look, because it's not smart enough to figure out where you want it to look. To get to the variable dog_name,
+inside of a method say_dog_name, that is in turn inside of a class named Dog, you will have to tell Ruby: Dog.new.say_dog_name.
+You're going two layers deep into the scope of the Dog object to find that variable. If you just call dog_name in the global
+scope, you get nada. If you call Dog.new.dog_name? Same thing. It can't see the variable you want until you tell it to dig
+deep enough.
 =end
 
 # So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections
