@@ -23,7 +23,8 @@
      anywhere within the scope of the instance it is defined in. It's easy to tell local from instance. Just look for the
      @ in the front. The variable x is a local variable. The variable @x is an instance variable, assuming they each were
      defined already. Ruby has two other variable types called global variables and class variables. Don't worry about those
-     for now. Seriously. You could write good ruby code for the next 10 years without ever having to worry about those two.
+     for now. Seriously. You can write code fine without ever having to worry about those two, and there is plenty of time
+     to learn about them once your comfortable with local and instance variables.
 
   5. A variable is not actually the value you assign it, it is a reference to the value that is stored in memory. When you
      invoke/call a variable, Ruby will go find the value attached to the variable and give it to you. Not crucial to
@@ -113,18 +114,19 @@ your chest is. These are your push ups. So do five, or ten if you want.
 =end
 
 # Variables can also be designated as 'instance variables' when they are defined/created/declared (these all mean the same
-# thing). You do this by...starting the variable out with the @ symbol. That's it. Now it's an instance variable instead
+# thing). You do this by starting the variable out with the @ symbol. That's it. Now it's an instance variable instead
 # of a local variable. For example:
 
 # example 1
 @name = 'Bob'
 
-# What that does is allow the variable to be passed to anything within the scope of environment it was created in. (Wat!!)
-# If that's confusing don't worry, it just takes exposure to see the pattern. For now, let's say that every class and
-# method you create in Ruby will have it's own scope, and if you try to use a variable that has been defined outside of
-# that scope, Ruby will say, 'Hey! I don't have that reference!'. Example:
+# What that does is make that variable available to any instance of the object it was created in. (Wat!!) If that's
+# confusing don't worry, it just takes exposure to see the pattern. For now, let's say that every class and method you
+# create in Ruby will have it's own scope, and the variables available in that scope will be determined by where they
+# were created, and what kind of variables they are.
 
-# Let's make a variable, defined/declared in the global scope, meaning it's not inside of another object (class, method, etc.)
+# Let's make a variable, defined/declared in the global scope, meaning it is inside the top level object in Ruby, called
+# Main, but not inside of any other object (class, method, etc.)
 dog_name = 'Killer'
 
 # And then let's make a method that we want to use the variable dog_name in, but we are lazy and don't want to pass it in.
@@ -136,39 +138,36 @@ end
 # Then let's call/invoke/execute the method say_dog_name
 say_dog_name # => NameError: undefined local variable or method `dog_name' for main:Object
 
-# Huh? What are you telling me Ruby? I gave you a variable!!! Well we gave the global object a variable, true and in the scope of
-# the global object, dog_name has a value. BUT, in the scope of the method say_dog_name, the variable dog_name does not exist.
-# So what's a developer to do? We could just pass it in right?
+# Huh? What are you telling me Ruby? I gave you a variable!!! Well we gave the global object a variable, and in the scope of
+# the global object, dog_name has a value. BUT, it is a local variable, and so it only 'exists' in the local scope where it
+# was made, the global object. in the scope of the method say_dog_name, the variable dog_name does not exist.
+# So what's a developer to do? We could just pass it in to our method right?
+dog_name = 'Killer'
 
 def say_dog_name(name)
   name
 end
 
-say_dog_name(dog_name)
+say_dog_name(dog_name) # => 'Killer'
 
-# But there is another way. This is where instance variables come in handy. Let's do that again, but with an @ sign in
-# front of our variable to make an 'instance' variable.
+# If we were using a class, we could use an instance variable when we 'initialize' it. Meaning we use the initialize method
+# to declare instance variables that will then be available to other methods in the class. Like this:
 
-@dog_name = 'Killer'
+class Dog
+  def initialize
+    @name = 'Killer'
+  end
 
-def say_dog_name
-  @dog_name
+  def growl
+    @name + ' says grrrrrr!'
+  end
+
+  def speak
+    @name + ' says ruff!'
+  end
 end
 
-say_dog_name # => "Killer"
-
-# Now it works, because the @ sign tells Ruby to treat @dog_name as 'accessible' to all 'lower scopes'. What I mean by lower
-# scopes is, any method or other object that could use this variable, that is defined within the object where this variable was
-# defined. Read that a couple of times if it's confusing, and remember it takes exposure to sink in.
-
-# So for example, since my @dog_name variable was defined in the global scope, pretty much every object I make has access
-# to it, thanks to it being an instance variable. But instance variables can only be accessed by inner objects, meaning
-# anything defined inside of the object where you defined the instance variable.
-# To illustrate, what if I define my instance variable inside of a method?. Does that mean the global scope (when I say
-# 'global', I'm referring to the global object, which is a thing. Kind of like the universe to Ruby.) can no longer
-# see it? You bet is does. Let's do that to see what happens:
-
-# example 2: Define a method with an instance variable inside of it.
+# example 2: We can define a method with an instance variable inside of it.
 def dog_name
   @name = 'Killer'
 end
@@ -184,59 +183,31 @@ say_dog_name # => nil
 # inside of the SCOPE of the method dog_name, any scope further down (any 'inner' scope). All 'outer' scopes can't see
 # that variable. Buuuuuuuut since objects can carry their scope around with them (this is called closure, and will be
 # covered later), we can get at that variable by using the value of the method instead of trying to use the value of the
-# instance variable inside of it. Let's do that. The same thing would happen even if we put both of the above methods inside
-# of a class named Dog. Instance variables can't be seen by OTHER objects that are in a higher scope, or in the same scope.
-# To clarify, if we had that Dog class and the instance variable was declared inside the class, but not inside a particular
-# method, all methods inside the class would be able to access it. Let's do that:
+# instance variable inside of it. Let's do that.
 
-class Dog
-  @name = 'Killer'
+# We will define a method named say_dog_name and inside of it, we will call the method dog_name that resolves to the value,
+# 'Killer'. This gives us access to the @name variable inside of dog_name.
 
-  def growl
-    @name + ' says grrrrrr!'
-  end
+# The same thing would happen even if we put both of the above methods inside of a class named Dog, and then used an
+# initialize method for the class, with an instance variable @name. Instance variables differ from local variables in that
+# they are attached to an object, not a scope, so they can be taken with an object (Like a class or a method) wherever
+# that object goes.
 
-  def speak
-    @name + ' says ruff!'
-  end
-end
 
-# Now we call both methods, after instantiating our Dog class of course.
-
+# Now we assign a new instance of Dog to a variable we name dog, and invoke the methods we made on it.
 dog = Dog.new
 dog.growl # => "Killer says grrrrrr!"
 dog.speak # => "Killer says ruff!"
 
 # Now both of the methods in the Dog class can access the variable @name, and that's primarily the use for instance variables,
-# so they can be passed around inside of the object they live in.
+# so they can be passed around inside of the object they live in. Any new methods you make will also have @name to use.
 
-# We will define a method named say_dog_name and inside of it, we will call the method dog_name that we defined above in
-# example 2. This gives us access to the @name variable inside of dog_name.
-def say_dog_name
-  dog_name
-end
-
-say_dog_name # => "Killer"
-
-# Ok how did that work? First, scope is restricted the environment inside of a Ruby object, so the object dog_name, which
-# happens to be a method, has access to the variable @name, because @name is inside of it. So, wherever we call the method
+# Ok how did that work? First, the scope of a variable is restricted by where it is declared, and what type of variable
+# it is. So the object dog_name, which happens to be a method, has access to the variable @name, because @name is inside of it. So, wherever we call the method
 # dog_name, we have access to the value of @name. Just think of every object that has variables inside as a container, and
 # when you call that object, you now access to what it carries inside. Let's make a real world comparison:
 
 =begin
-Cat Woman is burgling and needs a lockpick to get past a door. She knows it is inside her lockpick bag outside. So she radios
-to her sidekick, Batman, who is waiting outside, holding the lockpick bag. "Hey, go get me a lockpick." Cat Woman says "No
-problem", says Batman, but then he gets back on the radio and says, "I don't see a lockpick out here". Cat Woman shakes
-her head, remembering that Batman has been in a lot of fights where his noggin gets hit. "It's inside of the lockpick bag."
-"Ahah!" says Batman, "I found it.".
-
-In Ruby, you need to treat variables declared inside of objects like the lockpick inside the lockpick bag. Tell Ruby exactly
-where to look, because it's not smart enough to figure out where you want it to look. To get to the variable dog_name,
-inside of a method say_dog_name, that is in turn inside of a class named Dog, you will have to tell Ruby: Dog.new.say_dog_name.
-You're going two layers deep into the scope of the Dog object to find that variable. If you just call dog_name in the global
-scope, you get nada. If you call Dog.new.dog_name? Same thing. It can't see the variable you want until you tell it to dig
-deep enough.
-
 ***** Exercise *****
 
 Open your REPL again. (Whatever you use to write code in your terminal (irb, etc.) is called a REPL.)
@@ -244,16 +215,17 @@ Assign a number value (you pick) to a LOCAL variable named y.
 define a method named number_doubler, and let that method accept a PARAMETER, named number, then times that
 parameter by itself inside the method.
 call the number_doubler method, PASSING IN the variable y as the ARGUMENT.
-
 =end
 
-# So can variables hold more than one value at a time? YES! They can. But they have to use collections to do it. Collections
-# are usually Array objects [1, 2, 3] or Hash objects {one: 1, two: 2, three: 3}. So technically the variable still only
-# holds one value, but that value itself, holds more nested values.
+# So can variables hold more than one value at a time? YES! They can. Kind of. But they have to use collections to do it.
+# Collections are usually Array objects [1, 2, 3] or Hash objects {one: 1, two: 2, three: 3}. So technically the variable
+# still only holds one value, but that value itself, holds more nested values.
 
 # Two examples of variables that store multiple values by using collection objects.
+
 # Assign an array object to the variable two_strings.
 two_strings = ['String one is at index 0', 'String two is at index 1']
+
 # Assign a hash object to the variable number_hash.
 number_hash = {one: 1, two: 2, three: 3}
 
