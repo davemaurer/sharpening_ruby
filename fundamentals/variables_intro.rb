@@ -130,7 +130,6 @@ your chest is. These are your push ups. So do five, or ten if you want.
 dog_name = 'Killer'
 
 # And then let's make a method that we want to use the variable dog_name in, but we are lazy and don't want to pass it in.
-
 def say_dog_name
   dog_name # Remember, ruby will execute this as return dog_name implicitly for you.
 end
@@ -141,7 +140,38 @@ say_dog_name # => NameError: undefined local variable or method `dog_name' for m
 # Huh? What are you telling me Ruby? I gave you a variable!!! Well we gave the global object a variable, and in the scope of
 # the global object, dog_name has a value. BUT, it is a local variable, and so it only 'exists' in the local scope where it
 # was made, the global object. in the scope of the method say_dog_name, the variable dog_name does not exist.
-# So what's a developer to do? We could just pass it in to our method right?
+
+# example 2: Well, we can try to define a method with an instance variable inside of it. Instance variables can be accessed
+# by more stuff than local variables can, right?
+def dog_name
+  @name = 'Killer'
+end
+
+# And now we will make another method that will try to use our instance variable, @name.
+def say_dog_name
+  @name
+end
+
+say_dog_name # => nil
+
+# Wat! The reason this doesn't work is because @name was defined inside of the method dog_name. So it's only available
+# inside of the SCOPE of the method dog_name. All other scopes can't see that variable. Buuuuuuuut since objects can carry
+# their scope around with them (this is called closure, and will be covered later), we can get at that variable by using
+# the value the method returns instead of trying to use the value of the instance variable inside of it. Let's do that.
+
+# We will define a method named dog_name and make it's return value 'Killer', then we will define a method named say_dog_name,
+# and we'll make it's return value the method dog_name. This gives us access to the string 'Killer', that we want so badly.
+def dog_name
+  'Killer'
+end
+
+def say_dog_name
+  dog_name
+end
+
+say_dog_name # => 'Killer'
+
+# We could also just pass the variable in to our method right? Because methods accept arguments/parameters.
 dog_name = 'Killer'
 
 def say_dog_name(name)
@@ -150,9 +180,17 @@ end
 
 say_dog_name(dog_name) # => 'Killer'
 
-# If we were using a class, we could use an instance variable when we 'initialize' it. Meaning we use the initialize method
-# to declare instance variables that will then be available to other methods in the class. Like this:
+# So how do we actually use instance variables? One way is to use them inside of classes. We can define a class named Dog,
+# and then use an initialize method inside of the class that declares a variable we will call @name. Instance variables
+# differ from local variables in that they are attached to an object, not a scope, so they are available inside any 'instance'
+# of that object. Let's try it:
 
+# NOTE: The initialize method is actually a special Ruby method that tells the class it's defined in to use any variables
+# or objects defined inside of it. So when we use def initialize, and then define the variable @name, every instance of the
+# class Dog that we create will have that variable. Thus, every method in that class instance will be able to use it.
+
+# So we create a class, Dog, and initialize it with an instance variable, @name, giving it a value of 'Killer'. Then we define
+# two more methods that will use the @name instance variable.
 class Dog
   def initialize
     @name = 'Killer'
@@ -167,45 +205,14 @@ class Dog
   end
 end
 
-# example 2: We can define a method with an instance variable inside of it.
-def dog_name
-  @name = 'Killer'
-end
-
-# And now we will make another method that will try to use our instance variable, @name.
-def say_dog_name
-  @name
-end
-
-say_dog_name # => nil
-
-# Wat! The reason this doesn't work is because @name was defined inside of the method dog_name. So it's only available
-# inside of the SCOPE of the method dog_name, any scope further down (any 'inner' scope). All 'outer' scopes can't see
-# that variable. Buuuuuuuut since objects can carry their scope around with them (this is called closure, and will be
-# covered later), we can get at that variable by using the value of the method instead of trying to use the value of the
-# instance variable inside of it. Let's do that.
-
-# We will define a method named say_dog_name and inside of it, we will call the method dog_name that resolves to the value,
-# 'Killer'. This gives us access to the @name variable inside of dog_name.
-
-# The same thing would happen even if we put both of the above methods inside of a class named Dog, and then used an
-# initialize method for the class, with an instance variable @name. Instance variables differ from local variables in that
-# they are attached to an object, not a scope, so they can be taken with an object (Like a class or a method) wherever
-# that object goes.
-
-
-# Now we assign a new instance of Dog to a variable we name dog, and invoke the methods we made on it.
+# Now we assign a new instance of Dog to a variable we name dog, and invoke the methods it contains.
 dog = Dog.new
 dog.growl # => "Killer says grrrrrr!"
 dog.speak # => "Killer says ruff!"
 
-# Now both of the methods in the Dog class can access the variable @name, and that's primarily the use for instance variables,
-# so they can be passed around inside of the object they live in. Any new methods you make will also have @name to use.
-
 # Ok how did that work? First, the scope of a variable is restricted by where it is declared, and what type of variable
-# it is. So the object dog_name, which happens to be a method, has access to the variable @name, because @name is inside of it. So, wherever we call the method
-# dog_name, we have access to the value of @name. Just think of every object that has variables inside as a container, and
-# when you call that object, you now access to what it carries inside. Let's make a real world comparison:
+# it is. Because we used an instance variable, and defined it inside of an initialize method, all of the methods in the
+# class could see it.
 
 =begin
 ***** Exercise *****
