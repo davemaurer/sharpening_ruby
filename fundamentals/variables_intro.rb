@@ -12,7 +12,7 @@
      are open to interpretation. When dealing with Ruby, the conventional meanings are: Calling and invoking are the same
      thing when dealing with variables. It just means 'give me the value'. When dealing with methods or other things that
      can execute code, you can say call, invoke, or execute. You COULD say execute when talking about variables if you
-     wanted, but variables don't really execute anything, they just return the value they reference.
+     wanted, but variables don't really execute anything, they just give you the value they reference.
 
   3. Define/declare: In Ruby, these two mean the same thing basically. When you create something, like a variable, or a
      method (def is short for define by the way), or a class, etc., you are said to be defining, or declaring it. Then
