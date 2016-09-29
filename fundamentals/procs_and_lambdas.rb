@@ -49,7 +49,6 @@ end
 my_lambda_method("Yes") # => "This is the return that will happen, even though we invoke the lambda by calling it first"
 
 
-
 #PROCS - Arguments passed only to the block. Declared differently than Lambdas
 
 # 1 Example with options
@@ -66,7 +65,7 @@ end
 my_proc.call(3, 4) #(from 1 above) => 7
 no_arg_proc #(from 2 above) => This is a proc with no arguments
 
-#Stand alone procs invoked outside of another function will not handle a return statement as a method would,
+#Stand alone procs invoked outside of another function/method will not handle a return statement as a method would,
 # because you can't use the return keyword inside of a block. The block will automatically handle the return for
 # you. Ex:
 this_bad_proc = Proc.new do |a|

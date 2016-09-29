@@ -8,7 +8,7 @@ many things as you can automatic:
    and brain power you need to use on that process. Typing.io is great, and just using that 15-20 minutes a day can
    drastically improve your speed.
 
-2. Take good notes. 
+2. Take good notes.
 
 3. Know your built in methods backwards and forwards. Map, select, find, reduce, each. All of these should be mindless for
    you. Do them so many times they just happen, without you really needing to struggle through the process, or check a
