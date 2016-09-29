@@ -22,4 +22,8 @@ class Hobbit
   def has_ring?
     @name == 'Frodo'
   end
+
+  def is_short?
+    true
+  end
 end
