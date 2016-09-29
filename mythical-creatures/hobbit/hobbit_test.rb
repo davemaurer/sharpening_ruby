@@ -63,11 +63,14 @@ class HobbitTest < Minitest::Test
   end
 
   def test_hobbit_has_the_ring_if_its_name_is_frodo
-    skip
     # create a hobbit named Frodo
+    frodo = Hobbit.new('Frodo')
     # create a second hobbit named Sam
+    sam = Hobbit.new('Sam')
     # check that .has_ring? for Frodo returns true
+    assert frodo.has_ring?
     # check that .has_ring? for Sam returns false
+    refute sam.has_ring?
   end
 
   def test_hobbits_are_short
