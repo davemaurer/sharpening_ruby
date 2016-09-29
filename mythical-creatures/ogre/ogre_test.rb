@@ -29,7 +29,7 @@ class OgreTest < Minitest::Test
     assert_equal 1, human.encounter_counter
   end
 
-  def test_humans_only_notices_ogre_every_third_encounter
+  def test_humans_only_notice_ogre_every_third_encounter
     skip
     ogre = Ogre.new('Brak')
     human = Human.new
@@ -59,7 +59,7 @@ class OgreTest < Minitest::Test
     ogre = Ogre.new('Brak')
     human = Human.new
     ogre.swing_at(human)
-    assert_equal 1, ogre.swings
+    assert_equal 1, ogre.times_swung
   end
 
   def test_it_swings_the_club_when_the_human_notices_it
@@ -67,13 +67,13 @@ class OgreTest < Minitest::Test
     ogre = Ogre.new('Brak')
     human = Human.new
     ogre.encounter(human)
-    assert_equal 0, ogre.swings
+    assert_equal 0, ogre.times_swung
     refute human.notices_ogre?
 
     ogre.encounter(human)
     ogre.encounter(human)
 
-    assert_equal 1, ogre.swings
+    assert_equal 1, ogre.times_swung
     assert human.notices_ogre?
   end
 
@@ -87,7 +87,7 @@ class OgreTest < Minitest::Test
     end
 
     assert_equal 6, ogre.encounter_counter
-    assert_equal 2, ogre.swings
+    assert_equal 2, ogre.times_swung
     assert human.knocked_out?
   end
 
