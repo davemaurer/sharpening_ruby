@@ -25,7 +25,6 @@ class HobbitTest < Minitest::Test
   end
 
   def test_grows_older_when_celebrating_birthdays
-    skip
     hobbit = Hobbit.new('Meriadoc')
     assert_equal 0, hobbit.age
     5.times do
