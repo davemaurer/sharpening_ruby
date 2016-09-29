@@ -19,8 +19,7 @@ class PirateTest < Minitest::Test
     assert_equal 'Scallywag', pirate.job
   end
 
-  def test_in_not_always_a_scallywag
-    skip
+  def test_is_not_always_a_scallywag
     pirate = Pirate.new("Jack", "Cook")
     assert_equal "Cook", pirate.job
   end
