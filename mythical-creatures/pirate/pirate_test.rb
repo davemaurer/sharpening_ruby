@@ -41,9 +41,10 @@ class PirateTest < Minitest::Test
   end
 
   def test_a_pirate_can_rob_ships
-    skip
     # create a pirate
+    black_beard = Pirate.new('Black Beard')
     # check that a pirate has a rob_ship method
+    assert black_beard.rob_ship
   end
 
   def test_a_pirate_has_booty
