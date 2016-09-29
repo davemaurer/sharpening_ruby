@@ -5,5 +5,10 @@ class Dragon
     @name  = name
     @rider = rider
     @color = color
+    @hungry = true
+  end
+
+  def hungry?
+    @hungry
   end
 end
