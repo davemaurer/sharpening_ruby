@@ -42,24 +42,26 @@ class PirateTest < Minitest::Test
 
   def test_a_pirate_can_rob_ships
     # create a pirate
-    black_beard = Pirate.new('Black Beard')
+    black_beard = Pirate.new("Black Beard")
     # check that a pirate has a rob_ship method
     assert black_beard.rob_ship
   end
 
   def test_a_pirate_has_booty
     # create a pirate
-    broke_guy = Pirate.new('Broke Guy')
+    broke_guy = Pirate.new("Broke Guy")
     # pirate starts with 0 booty
     assert_equal 0, broke_guy.booty
 
   end
 
-  def test_a_pirate_gets_100_booty_for_robbon
-    skip
+  def test_a_pirate_gets_100_booty_for_robbing_a_ship
     # create a pirate
+    richy = Pirate.new("Richy")
     # pirate robs ship
+    richy.rob_ship
     # check pirate has 100 booty
+    assert_equal 100, richy.booty
   end
 
 end
