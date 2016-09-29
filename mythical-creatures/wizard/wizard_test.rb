@@ -36,24 +36,30 @@ class WizardTest < Minitest::Test
 
   def test_starts_rested
     # create wizard
-    wizzy = Wizard.new('Gandorph')
+    wizzy = Wizard.new("Gandorph")
     # .rested? returns true
     assert wizzy.rested?
   end
 
   def test_can_cast_spells
-    skip
     # create wizard
+    wizzy = Wizard.new("Gandorph")
     # .cast returns "MAGIC MISSILE!"
+    assert_equal "MAGIC MISSILE!", wizzy.cast
   end
 
   def test_gets_tired_after_casting_three_spells
-    skip
     # create wizard
+    wizzy = Wizard.new("Gandorph")
     # casts spell twice
+    wizzy.cast
+    wizzy.cast
     # check wizard is rested
+    assert wizzy.rested?
     # casts spell
+    wizzy.cast
     # check wizard is not rested
+    refute wizzy.rested?
   end
 
 end
