@@ -5,18 +5,14 @@ class Dragon
     @name  = name
     @rider = rider
     @color = color
-    @hungry = {hungry: true, times_eaten: 0}
+    @hungry = 0
   end
 
   def hungry?
-    @hungry[0] = true unless full?
+    @hungry < 3
   end
 
   def eat
-    @hungry[:times_eaten] += 1
-  end
-
-  def full?
-    @hungry[:times_eaten] >= 3
+    @hungry += 1
   end
 end
