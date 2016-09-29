@@ -10,4 +10,8 @@ class Hobbit
   def celebrate_birthday
     @age += 1
   end
+
+  def adult?
+    @age > 33
+  end
 end
