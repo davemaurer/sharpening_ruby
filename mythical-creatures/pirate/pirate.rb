@@ -5,4 +5,8 @@ class Pirate
     @name = name
     @job = job
   end
+
+  def cursed?
+    false
+  end
 end

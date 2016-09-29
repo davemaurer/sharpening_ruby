@@ -25,7 +25,6 @@ class PirateTest < Minitest::Test
   end
 
   def test_isnt_cursed_by_default
-    skip
     pirate = Pirate.new("Jack")
     refute pirate.cursed?
   end
