@@ -48,9 +48,11 @@ class PirateTest < Minitest::Test
   end
 
   def test_a_pirate_has_booty
-    skip
     # create a pirate
+    broke_guy = Pirate.new('Broke Guy')
     # pirate starts with 0 booty
+    assert_equal 0, broke_guy.booty
+
   end
 
   def test_a_pirate_gets_100_booty_for_robbon
