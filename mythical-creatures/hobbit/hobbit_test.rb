@@ -42,7 +42,6 @@ class HobbitTest < Minitest::Test
   end
 
   def test_comes_of_age_at_33
-    skip
     hobbit = Hobbit.new('Otho')
     33.times do
       hobbit.celebrate_birthday

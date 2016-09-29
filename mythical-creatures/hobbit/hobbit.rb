@@ -12,6 +12,6 @@ class Hobbit
   end
 
   def adult?
-    @age > 33
+    @age > 32
   end
 end
