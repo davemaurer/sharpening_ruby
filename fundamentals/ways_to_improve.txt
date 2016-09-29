@@ -1,0 +1,19 @@
+To get better at programming, or to start learning it at all, you need to have the right strategy. Some ways of learning
+are more effective than others. I will go over the things I think are most important to effective learning.
+
+Make background tasks as easy as possible. Every decision you have to work through drains your mental bucket, so make as
+many things as you can automatic:
+
+1. Type fast: This doesn't make or break a programmer, but the easier it is to get the code in the editor, the less time
+   and brain power you need to use on that process. Typing.io is great, and just using that 15-20 minutes a day can
+   drastically improve your speed.
+
+2. Take good notes.
+
+3. Know your built in methods backwards and forwards. Map, select, find, reduce, each. All of these should be mindless for
+   you. Do them so many times they just happen, without you really needing to struggle through the process, or check a
+   reference. We all need to look at an example sometimes, but every time you do, you take your mind off of the next step
+   in the chain of things you are trying to make happen. You take you eye off the ball so to speak. Do that as little as
+   possible.
+
+3.
