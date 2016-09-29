@@ -13,4 +13,8 @@ class Wizard
   def incantation(words)
     'sudo ' + words
   end
+
+  def rested?
+    true
+  end
 end
