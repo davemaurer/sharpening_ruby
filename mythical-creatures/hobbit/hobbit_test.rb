@@ -20,7 +20,6 @@ class HobbitTest < Minitest::Test
   end
 
   def test_can_have_a_different_disposition
-    skip
     hobbit = Hobbit.new("Frodo", "adventurous")
     assert_equal "adventurous", hobbit.disposition
   end
