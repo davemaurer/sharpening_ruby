@@ -10,10 +10,7 @@ class Medusa
 
   def stare(target)
     @statues << target
-    if @statues.length > 3
-      lucky_person = @statues.shift
-      lucky_person.unstone
-    end
-    target.turn_to_stone
+    @statues.shift if @statues.length > 3
+    @statues.each { |statue| statue.victims = @statues }
   end
 end

@@ -2,21 +2,15 @@ require_relative 'medusa'
 
 class Person
   attr_reader :name
+  attr_accessor :victims
 
   def initialize(name)
     @name = name
     @stoned = false
+    @victims = []
   end
 
   def stoned?
-    @stoned
-  end
-
-  def turn_to_stone
-    @stoned = true
-  end
-
-  def unstone
-    @stoned = false
+    @victims.include?(self)
   end
 end
