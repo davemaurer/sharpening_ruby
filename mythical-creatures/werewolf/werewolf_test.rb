@@ -15,13 +15,11 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_it_is_by_default_in_human_form
-    skip
     werewolf = Werewolf.new("David","London")
     assert werewolf.human?
   end
 
   def test_when_starting_as_a_human_changing_means_it_is_no_longer_human
-    skip
     werewolf = Werewolf.new("David","London")
     werewolf.change!
     refute werewolf.human?
