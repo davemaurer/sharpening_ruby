@@ -22,4 +22,8 @@ class Werewolf
   def hungry?
     wolf?
   end
+
+  def eat_someone(victim)
+    victim
+  end
 end
