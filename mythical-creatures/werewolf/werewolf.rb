@@ -24,6 +24,6 @@ class Werewolf
   end
 
   def eat_someone(victim)
-    victim
+    victim if wolf?
   end
 end

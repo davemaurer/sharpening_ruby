@@ -77,8 +77,9 @@ class WerewolfTest < Minitest::Test
   end
   
   def test_cannot_consume_victim_if_in_human_form
-    skip
-    # your code here
+    werewolf = Werewolf.new("David", "London")
+
+    refute werewolf.eat_someone(Victim.new)
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_is_no_longer_hungry
