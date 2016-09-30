@@ -5,7 +5,6 @@ class Werewolf
     @name = name
     @location = location
     @human = true
-    @hungry = false
   end
 
   def human?
