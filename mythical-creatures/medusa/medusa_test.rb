@@ -42,12 +42,47 @@ class MedusaTest < Minitest::Test
     victims.each do |victim|
       medusa.stare(victim)
     end
+
     assert_equal 3, medusa.statues.length
   end
 
-  def test_if_a_fourth_victim_is_stoned_first_is_unstoned
-    skip
-    # your code here
+  def test_if_a_fourth_victim_is_stoned_medusa_loses_the_first_statue
+    medusa = Medusa.new("Cassiopeia")
+    victim1 = Person.new("Bob")
+    victim2 = Person.new("Ralph")
+    victim3 = Person.new("Suzy")
+    victim4 = Person.new("Dori")
+    victims = [victim1, victim2, victim3]
+    victims.each do |victim|
+      medusa.stare(victim)
+    end
+
+    assert_equal "Bob", medusa.statues.first.name
+    assert_equal "Suzy", medusa.statues.last.name
+    assert_equal 3, medusa.statues.length
+
+    medusa.stare(victim4)
+
+    assert_equal "Ralph", medusa.statues.first.name
+    assert_equal "Dori", medusa.statues.last.name
   end
 
+
+  def test_if_a_fourth_victim_is_stoned_first_is_unstoned
+    medusa = Medusa.new("Cassiopeia")
+    victim1 = Person.new("Bob")
+    victim2 = Person.new("Ralph")
+    victim3 = Person.new("Suzy")
+    victim4 = Person.new("Dori")
+    victims = [victim1, victim2, victim3]
+    victims.each do |victim|
+      medusa.stare(victim)
+    end
+
+    assert victim1.stoned?
+
+    medusa.stare(victim4)
+
+    refute victim1.stoned?
+  end
 end

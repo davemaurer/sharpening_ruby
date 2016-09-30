@@ -9,7 +9,11 @@ class Medusa
   end
 
   def stare(target)
-    @statues << target if @statues.length < 3
+    @statues << target
+    if @statues.length > 3
+      lucky_person = @statues.shift
+      lucky_person.unstone
+    end
     target.turn_to_stone
   end
 end
