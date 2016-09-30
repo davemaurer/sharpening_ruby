@@ -25,6 +25,9 @@ class Werewolf
   end
 
   def eat_someone(victim)
-    @tummy << victim if wolf?
+    if wolf?
+      @tummy << victim
+      victim.status = :dead
+    end
   end
 end

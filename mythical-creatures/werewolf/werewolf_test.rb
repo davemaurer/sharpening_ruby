@@ -95,8 +95,15 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_makes_the_victim_dead
-    skip
-    # your code here
-  end
+    werewolf = Werewolf.new("David", "London")
+    werewolf.change!
+    lucky = Victim.new
 
+    assert_equal :alive, lucky.status
+
+    werewolf.eat_someone(lucky)
+
+    assert_equal :dead, lucky.status
+    refute_equal :alive, lucky.status
+  end
 end
