@@ -44,14 +44,12 @@ class CentaurTest < Minitest::Test
   end
 
   def test_when_cranky_it_will_not_shoot_a_bow
-    skip
     centaur = Centaur.new("George","Palomino")
     3.times { centaur.shoot }
     assert_equal "NO!", centaur.shoot
   end
 
   def test_when_cranky_it_will_not_run
-    skip
     centaur = Centaur.new("George","Palomino")
     3.times { centaur.shoot }
     assert_equal "NO!", centaur.run

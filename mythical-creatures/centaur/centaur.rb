@@ -11,12 +11,12 @@ class Centaur
 
   def shoot
     @exertion_count += 1
-    'Twang!!!'
+    cranky? ? 'NO!' : 'Twang!!!'
   end
 
   def run
     @exertion_count += 1
-    'Clop clop clop clop!!!'
+    cranky? ? 'NO!' : 'Clop clop clop clop!!!'
   end
 
   def cranky?
