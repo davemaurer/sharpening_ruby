@@ -15,7 +15,6 @@ class MedusaTest < Minitest::Test
   end
 
   def test_when_staring_at_a_person_she_gains_a_statue
-    skip
     medusa = Medusa.new("Cassiopeia")
     victim = Person.new("Perseus")
 
