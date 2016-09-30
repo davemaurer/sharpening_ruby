@@ -9,7 +9,7 @@ class Medusa
   end
 
   def stare(target)
-    @statues << target
+    @statues << target if @statues.length < 3
     target.turn_to_stone
   end
 end
