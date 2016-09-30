@@ -10,7 +10,6 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_it_has_a_location
-    skip
     werewolf = Werewolf.new("David","London")
     assert_equal "London", werewolf.location
   end
