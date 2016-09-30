@@ -73,6 +73,7 @@ class WerewolfTest < Minitest::Test
   def test_consumes_a_victim
     werewolf = Werewolf.new("David", "London")
     werewolf.change!
+
     assert werewolf.eat_someone(Victim.new)
   end
   
@@ -83,8 +84,14 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_is_no_longer_hungry
-    skip
-    # your code here
+    werewolf = Werewolf.new("David", "London")
+    werewolf.change!
+
+    assert werewolf.hungry?
+
+    werewolf.eat_someone(Victim.new)
+
+    refute werewolf.hungry?
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_makes_the_victim_dead

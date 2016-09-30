@@ -5,6 +5,7 @@ class Werewolf
     @name = name
     @location = location
     @human = true
+    @tummy = []
   end
 
   def human?
@@ -20,10 +21,10 @@ class Werewolf
   end
 
   def hungry?
-    wolf?
+    wolf? && @tummy.empty?
   end
 
   def eat_someone(victim)
-    victim if wolf?
+    @tummy << victim if wolf?
   end
 end
