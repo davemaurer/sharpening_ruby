@@ -10,5 +10,6 @@ class Medusa
 
   def stare(target)
     @statues << target
+    target.turn_to_stone
   end
 end
