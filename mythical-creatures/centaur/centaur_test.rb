@@ -25,13 +25,11 @@ class CentaurTest < Minitest::Test
   end
 
   def test_when_first_created_it_is_not_cranky
-    skip
     centaur = Centaur.new("George","Palomino")
     refute centaur.cranky?
   end
 
   def test_when_first_created_it_is_standing_up
-    skip
     centaur = Centaur.new("George","Palomino")
     assert centaur.standing?
   end

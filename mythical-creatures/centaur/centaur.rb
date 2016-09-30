@@ -4,6 +4,8 @@ class Centaur
   def initialize(name, breed)
     @name  = name
     @breed = breed
+    @cranky = false
+    @standing = true
   end
 
   def shoot
@@ -12,5 +14,13 @@ class Centaur
 
   def run
     'Clop clop clop clop!!!'
+  end
+
+  def cranky?
+    @cranky
+  end
+
+  def standing?
+    @standing
   end
 end
