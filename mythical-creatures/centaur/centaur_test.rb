@@ -35,7 +35,6 @@ class CentaurTest < Minitest::Test
   end
 
   def test_after_running_or_shooting_a_bow_three_times_it_gets_cranky
-    skip
     centaur = Centaur.new("George","Palomino")
     refute centaur.cranky?
     centaur.shoot
