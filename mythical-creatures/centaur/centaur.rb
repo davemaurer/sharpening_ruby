@@ -5,6 +5,7 @@ class Centaur
     @name           = name
     @breed          = breed
     @cranky         = false
+    @sick           = false
     @standing       = true
     @exertion_count = 0
   end
@@ -31,6 +32,10 @@ class Centaur
     !@standing
   end
 
+  def sick?
+    @sick
+  end
+
   def sleep
     standing? ? 'NO!' : @exertion_count = 0
   end
@@ -41,5 +46,10 @@ class Centaur
 
   def stand_up
     @standing = true
+  end
+
+  def drink_potion
+    return 'NO!' unless standing?
+    @exertion_count == 0 ? @sick = true : @exertion_count = 0
   end
 end
