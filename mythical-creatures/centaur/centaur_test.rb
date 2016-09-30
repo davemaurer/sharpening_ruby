@@ -10,19 +10,16 @@ class CentaurTest < Minitest::Test
   end
 
   def test_it_has_a_horse_breed
-    skip
     centaur = Centaur.new("George","Palomino")
     assert_equal "Palomino", centaur.breed
   end
 
   def test_it_has_excellent_bow_skills
-    skip
     centaur = Centaur.new("George","Palomino")
     assert_equal "Twang!!!", centaur.shoot
   end
 
   def test_it_makes_a_horse_sound_when_it_runs
-    skip
     centaur = Centaur.new("George","Palomino")
     assert_equal "Clop clop clop clop!!!", centaur.run
   end
