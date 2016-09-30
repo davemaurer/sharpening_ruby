@@ -11,12 +11,12 @@ class Centaur
 
   def shoot
     @exertion_count += 1
-    cranky? ? 'NO!' : 'Twang!!!'
+    cranky? || laying? ? 'NO!' : 'Twang!!!'
   end
 
   def run
     @exertion_count += 1
-    cranky? ? 'NO!' : 'Clop clop clop clop!!!'
+    cranky? || laying? ? 'NO!' : 'Clop clop clop clop!!!'
   end
 
   def cranky?
@@ -37,5 +37,9 @@ class Centaur
 
   def lay_down
     @standing = false
+  end
+
+  def stand_up
+    @standing = true
   end
 end
