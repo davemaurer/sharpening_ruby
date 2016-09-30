@@ -32,7 +32,7 @@ class Centaur
   end
 
   def sleep
-    'NO!' if standing?
+    standing? ? 'NO!' : @exertion_count = 0
   end
 
   def lay_down

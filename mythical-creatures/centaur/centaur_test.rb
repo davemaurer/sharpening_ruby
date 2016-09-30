@@ -93,7 +93,6 @@ class CentaurTest < Minitest::Test
   end
 
   def test_after_sleeping_it_is_no_longer_cranky
-    skip
     centaur = Centaur.new("George","Palomino")
 
     centaur.shoot
