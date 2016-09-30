@@ -12,6 +12,10 @@ class Werewolf
   end
 
   def change!
-    @human = false
+    @human ? @human = false : @human = true
+  end
+
+  def wolf?
+    !@human
   end
 end

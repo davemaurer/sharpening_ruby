@@ -26,14 +26,12 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_when_starting_as_a_human_changing_turns_it_into_a_werewolf
-    skip
     werewolf = Werewolf.new("David","London")
     werewolf.change!
     assert werewolf.wolf?
   end
 
   def test_when_starting_as_a_human_changing_a_second_time_it_becomes_human_again
-    skip
     werewolf = Werewolf.new("David","London")
     assert werewolf.human?
     werewolf.change!
