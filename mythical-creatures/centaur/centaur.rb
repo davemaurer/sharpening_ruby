@@ -26,4 +26,16 @@ class Centaur
   def standing?
     @standing
   end
+
+  def laying?
+    !@standing
+  end
+
+  def sleep
+    'NO!' if standing?
+  end
+
+  def lay_down
+    @standing = false
+  end
 end
