@@ -1,7 +1,28 @@
-class Ogre
-  attr_reader :name
+require_relative 'human'
 
-  def initialize(name)
-    @name = name
+class Ogre
+  attr_reader :name, :home
+  attr_accessor :times_swung, :encounter_counter
+
+  def initialize(name, home = 'Swamp')
+    @name        = name
+    @home        = home
+    @times_swung = 0
+    @encounter_counter = 0
+  end
+
+  def encounter(target)
+    target.encounter_counter += 1
+    @encounter_counter += 1
+    swing_at(target) if target.notices_ogre?
+  end
+
+  def swing_at(target)
+    @times_swung += 1
+    target.knocked_out = true if @times_swung % 2 == 0
+  end
+
+  def apologize(target)
+    target.knocked_out = false
   end
 end
