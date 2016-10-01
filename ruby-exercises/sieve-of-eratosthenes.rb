@@ -7,7 +7,11 @@ class SieveIt
   end
 
   def find_primes
-    puts numbers - collect_composite_numbers
+    numbers - collect_composite_numbers
+  end
+
+  def tally_primes
+    find_primes.length
   end
 
   def collect_composite_numbers
@@ -24,7 +28,8 @@ class SieveIt
 end
 
 number = ARGV[0].to_i
+command = ARGV[1]
 
 sieve = SieveIt.new(number)
 
-sieve.find_primes
+puts sieve.send(command.to_s)
