@@ -21,4 +21,8 @@ class Ogre
     @times_swung += 1
     target.knocked_out = true if @times_swung % 2 == 0
   end
+
+  def apologize(target)
+    target.knocked_out = false
+  end
 end

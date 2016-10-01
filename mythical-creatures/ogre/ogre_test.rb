@@ -85,7 +85,6 @@ class OgreTest < Minitest::Test
   end
 
   def test_human_wakes_up_when_ogre_apologizes
-    skip
     ogre = Ogre.new('Brak')
     human = Human.new
 
