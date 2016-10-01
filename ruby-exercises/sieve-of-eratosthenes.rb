@@ -1,8 +1,8 @@
 class SieveIt
   attr_reader :n, :numbers
 
-  def initialize(num)
-    @n     = num
+  def initialize(num = ARGV[0].to_i)
+    @n       = num
     @numbers = (2..num).to_a
   end
 
@@ -15,9 +15,10 @@ class SieveIt
         next_num = next_num + num
       end
     end
-    return numbers - composites
+    puts numbers - composites
   end
 end
 
-sieve = SieveIt.new(20)
-puts sieve.eliminate_composite_numbers
+sieve = SieveIt.new
+
+sieve.eliminate_composite_numbers
