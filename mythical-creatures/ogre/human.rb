@@ -6,4 +6,8 @@ class Human
     @name = name
     @encounter_counter = 0
   end
+
+  def notices_ogre?
+    encounter_counter % 3 == 0
+  end
 end

@@ -28,7 +28,6 @@ class OgreTest < Minitest::Test
   end
 
   def test_humans_only_notice_ogre_every_third_encounter
-    skip
     ogre = Ogre.new('Brak')
     human = Human.new
 
