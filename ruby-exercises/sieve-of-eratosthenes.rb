@@ -17,19 +17,17 @@ class SieveIt
   def collect_composite_numbers
     composites = []
     numbers.each do |num|
-      next_num = num + num
-      until next_num > n
+      next_num = num * 2
+      until next_num >= n
         composites << next_num
-        next_num = next_num + num
+        next_num += num
       end
     end
     composites
   end
 end
 
-number = ARGV[0].to_i
+number  = ARGV[0].to_i
 command = ARGV[1]
-
-sieve = SieveIt.new(number)
-
+sieve   = SieveIt.new(number)
 puts sieve.send(command.to_s)
