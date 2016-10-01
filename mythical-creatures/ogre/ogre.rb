@@ -12,6 +12,7 @@ class Ogre
 
   def encounter(target)
     target.encounter_counter += 1
+    swing_at(target) if target.notices_ogre?
   end
 
   def swing_at(target)

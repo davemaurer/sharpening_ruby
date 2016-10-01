@@ -58,7 +58,6 @@ class OgreTest < Minitest::Test
   end
 
   def test_it_swings_the_club_when_the_human_notices_it
-    skip
     ogre = Ogre.new('Brak')
     human = Human.new
     ogre.encounter(human)
