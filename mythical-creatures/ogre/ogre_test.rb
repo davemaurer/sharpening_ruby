@@ -9,7 +9,6 @@ class OgreTest < Minitest::Test
   end
 
   def test_it_can_live_somewhere_by_default
-    skip
     ogre = Ogre.new('Brak')
     assert_equal 'Swamp', ogre.home
   end
