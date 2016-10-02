@@ -1,9 +1,15 @@
 class Bag
+  attr_accessor :contents
+
   def initialize
-    @empty = true
+    @contents = []
   end
 
   def empty?
-    @empty
+    @contents.length == 0
+  end
+
+  def count
+    @contents.length
   end
 end

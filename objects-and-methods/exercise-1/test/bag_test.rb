@@ -10,7 +10,6 @@ class BagTest < Minitest::Test
   end
 
   def test_count_the_candies_in_an_empty_bag
-    skip
     assert_equal 0, Bag.new.count
   end
 
