@@ -8,4 +8,8 @@ class Scrabbler
   def initialize(string)
     @string = string
   end
+
+  def chop_up_into_letters
+    string.downcase.chars
+  end
 end
