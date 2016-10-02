@@ -1,15 +1,19 @@
 class Bag
-  attr_accessor :contents
+  attr_accessor :candies
 
   def initialize
-    @contents = []
+    @candies = []
   end
 
   def empty?
-    @contents.length == 0
+    count == 0
   end
 
   def count
-    @contents.length
+    @candies.length
+  end
+
+  def <<(target)
+    candies.push(target)
   end
 end
