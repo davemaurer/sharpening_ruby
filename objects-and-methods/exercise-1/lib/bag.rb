@@ -10,10 +10,14 @@ class Bag
   end
 
   def count
-    @candies.length
+    candies.length
   end
 
   def <<(target)
     candies.push(target)
+  end
+
+  def contains?(string)
+    candies.map { |candy| candy.type }.include?(string)
   end
 end
