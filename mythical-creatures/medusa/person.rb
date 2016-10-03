@@ -5,8 +5,8 @@ class Person
   attr_accessor :victims
 
   def initialize(name)
-    @name = name
-    @stoned = false
+    @name    = name
+    @stoned  = false
     @victims = []
   end
 

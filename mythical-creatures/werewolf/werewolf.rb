@@ -2,10 +2,10 @@ class Werewolf
   attr_reader :name, :location
 
   def initialize(name, location='London')
-    @name = name
+    @name     = name
     @location = location
-    @human = true
-    @tummy = []
+    @human    = true
+    @tummy    = []
   end
 
   def human?

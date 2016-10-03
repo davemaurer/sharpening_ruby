@@ -5,9 +5,9 @@ class Ogre
   attr_accessor :times_swung, :encounter_counter
 
   def initialize(name, home= 'Swamp')
-    @name        = name
-    @home        = home
-    @times_swung = 0
+    @name              = name
+    @home              = home
+    @times_swung       = 0
     @encounter_counter = 0
   end
 
