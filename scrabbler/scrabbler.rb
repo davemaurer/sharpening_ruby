@@ -3,10 +3,11 @@
 #a total.
 
 class Scrabbler
-  attr_reader :string
+  attr_reader :string, :scoring_key
 
   def initialize(string)
     @string = string
+    @scoring_key = ('a'..'z').zip(1..26).to_h
   end
 
   def chop_up_into_letters
