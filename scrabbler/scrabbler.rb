@@ -26,4 +26,13 @@ class Scrabbler
     number_string = score_word.to_s.chars
     number_string.map(&:to_i)
   end
+
+  def transform_word
+     letters = chop_word_into_numbers.map { |number| scoring_key.key(number) }
+     fix_zeroes(letters).join
+  end
+
+  def fix_zeroes(letters)
+    letters.map { |letter| letter.nil? ? 'o' : letter }
+  end
 end

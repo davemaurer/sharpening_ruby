@@ -27,4 +27,8 @@ describe Scrabbler do
   it 'turns a scored word into individual numbers' do
     expect(scrabbler.chop_word_into_numbers).to eq([6, 0, 3, 2, 8, 8, 0])
   end
+
+  it 'transforms a word score into another word' do
+    expect(scrabbler.transform_word).to eq("focbhho")
+  end
 end
