@@ -13,4 +13,8 @@ class Scrabbler
   def chop_up_into_letters
     string.downcase.chars
   end
+
+  def score_word
+    chop_up_into_letters.map { |letter| scoring_key[letter] }
+  end
 end
