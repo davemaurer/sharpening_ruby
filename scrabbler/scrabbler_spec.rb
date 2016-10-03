@@ -17,6 +17,10 @@ describe Scrabbler do
   end
 
   it 'can score each letter' do
-    expect(scrabbler.score_word).to eq([19, 20, 18, 9, 14, 7])
+    expect(scrabbler.score_letters).to eq([19, 20, 18, 9, 14, 7])
+  end
+
+  it 'can score a word' do
+    expect(scrabbler.score_word).to eq(87)
   end
 end
