@@ -16,11 +16,15 @@ describe Scrabbler do
     expect(scrabbler.scoring_key['z']).to eq(26)
   end
 
-  it 'can score each letter' do
+  it 'scores each letter' do
     expect(scrabbler.score_letters).to eq([19, 20, 18, 9, 14, 7])
   end
 
-  it 'can score a word' do
-    expect(scrabbler.score_word).to eq(87)
+  it 'scores a word' do
+    expect(scrabbler.score_word).to eq(6032880)
+  end
+
+  it 'turns a scored word into individual numbers' do
+    expect(scrabbler.chop_word_into_numbers).to eq([6, 0, 3, 2, 8, 8, 0])
   end
 end

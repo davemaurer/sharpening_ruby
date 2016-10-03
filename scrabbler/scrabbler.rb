@@ -19,6 +19,11 @@ class Scrabbler
   end
 
   def score_word
-    score_letters.reduce(0, &:+)
+    score_letters.reduce(&:*)
+  end
+
+  def chop_word_into_numbers
+    number_string = score_word.to_s.chars
+    number_string.map(&:to_i)
   end
 end
