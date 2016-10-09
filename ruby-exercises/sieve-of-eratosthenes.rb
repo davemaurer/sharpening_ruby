@@ -1,8 +1,8 @@
 class SieveIt
-  attr_reader :n, :numbers
+  attr_reader :end_num, :numbers
 
   def initialize(num)
-    @n       = num
+    @end_num = num
     @numbers = (2..num).to_a
   end
 
@@ -18,7 +18,7 @@ class SieveIt
     composites = []
     numbers.each do |num|
       next_num = num * 2
-      until next_num >= n
+      until next_num > end_num
         composites << next_num
         next_num += num
       end
