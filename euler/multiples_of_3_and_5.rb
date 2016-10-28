@@ -19,3 +19,7 @@ Benchmark.bm do |bm|
   end
 end
 
+# Benchmark results
+# user system total real
+# 22.280000 0.110000 22.390000 (22.987829) - Slick one line way
+# 19.070000 0.100000 19.170000 (19.274996) - Using .each
