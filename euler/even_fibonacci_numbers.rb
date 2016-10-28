@@ -26,3 +26,66 @@ Benchmark.bm do |bm|
   end
 end
 
+# Benchmark results for first pass with execution code wrapped in a definition, all inserted inside the do block.
+# user     system   total    real
+# 0.130000 0.020000 0.150000 (0.151338)
+
+# Benchmark.bm do |bm|
+#   iterations = 100000
+#   bm.report do
+#     iterations.times do
+#       def even_fib
+#         start = [1, 2]
+#         until start.last >= 4_000_000
+#           start << start[-1] + start[-2]
+#         end
+#         start.reduce(0) do |sum, num|
+#           if num.even?
+#             sum + num
+#           else
+#             sum
+#           end
+#         end
+#       end
+#     end
+#   end
+# end
+
+
+# Benchmark for code executed without method wrapper. Much slower.
+# user     system   total     real
+# 1.030000 0.010000 1.040000 (1.048313)
+
+# Benchmark.bm do |bm|
+#   iterations = 100000
+#   bm.report do
+#     iterations.times do
+#       start = [1, 2]
+#       until start.last >= 4_000_000
+#         start << start[-1] + start[-2]
+#       end
+#       start.reduce(0) do |sum, num|
+#         if num.even?
+#           sum + num
+#         else
+#           sum
+#         end
+#       end
+#     end
+#   end
+# end
+
+
+# Benchmark for code executed with method defined outside of benchmark do block and called within it. Roughly same as
+# above being called without the method wrapper above.
+# user     system   total    real
+# 1.060000 0.010000 1.070000 (1.076584)
+
+# Benchmark.bm do |bm|
+#   iterations = 100000
+#   bm.report do
+#     iterations.times do
+#       even_fib
+#     end
+#   end
+# end
