@@ -4,3 +4,18 @@
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the
 # even-valued terms.
 
+start = [1, 2]
+
+until start.last >= 4_000_000
+  start << start[-1] + start[-2]
+end
+
+result = start.reduce(0) do |sum, num|
+  if num.even?
+    sum + num
+  else
+    sum
+  end
+end
+
+puts result
