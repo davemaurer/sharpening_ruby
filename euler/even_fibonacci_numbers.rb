@@ -6,19 +6,23 @@
 require 'benchmark'
 
 Benchmark.bm do |bm|
+  iterations = 100000
   bm.report do
-  end
-  def even_fib
-    start = [1, 2]
-    until start.last >= 4_000_000
-      start << start[-1] + start[-2]
-    end
-    start.reduce(0) do |sum, num|
-      if num.even?
-        sum + num
-      else
-        sum
+    iterations.times do
+      def even_fib
+        start = [1, 2]
+        until start.last >= 4_000_000
+          start << start[-1] + start[-2]
+        end
+        start.reduce(0) do |sum, num|
+          if num.even?
+            sum + num
+          else
+            sum
+          end
+        end
       end
     end
   end
 end
+
