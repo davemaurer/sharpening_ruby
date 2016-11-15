@@ -3,12 +3,13 @@
 
 
 def find_dromes
-  max = 999 * 2
-  min = 100 * 2
+  max = 99*99
+  min = 10*10
   dromes = []
   (min..max).each do |num|
-    dromes < num if  num == num.reverse
+    dromes << num if  num.to_s == num.to_s.reverse
   end
-  dromes
+  puts dromes.last
 end
 
+find_dromes
