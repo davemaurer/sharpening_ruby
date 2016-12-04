@@ -4,7 +4,7 @@ class Ogre
   attr_reader :name, :home
   attr_accessor :times_swung, :encounter_counter
 
-  def initialize(name, home= 'Swamp')
+  def initialize(name, home='Swamp')
     @name              = name
     @home              = home
     @times_swung       = 0
