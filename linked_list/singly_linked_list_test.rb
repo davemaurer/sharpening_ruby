@@ -118,6 +118,12 @@ class SinglyLinkedListTest < Minitest::Test
     assert_equal 4, list.count
   end
 
+  def test_it_can_return_one_node
+    list.push_node('Obi')
+
+    assert_equal ['Obi'], list.all_nodes
+  end
+
   def test_it_can_return_all_nodes
     list.push_node('Chewy')
     list.push_node('Han')
